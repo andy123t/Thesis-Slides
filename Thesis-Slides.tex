@@ -71,13 +71,13 @@
 \makeatother
 
 
-%\AtBeginSection[]{
-%\begin{frame}
-%  \frametitle{Outline} %\small
-%  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
-%  \addtocounter{framenumber}{-1}
-%\end{frame}
-%}
+\AtBeginSection[]{
+\begin{frame}
+  \frametitle{Outline} %\small
+  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
+  \addtocounter{framenumber}{-1}
+\end{frame}
+}
 
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
@@ -101,7 +101,7 @@
 \graphicspath{{./Figures/}}
 
 \begin{document}
-\kaishu
+\songti
 
 \begin{frame}
 \titlepage
@@ -117,10 +117,8 @@
 %----------------------------------------------------------------------------------------
 
 %------------------------------------------------
-\section{第一节}
+\section{文本与 Block}
 %------------------------------------------------
-
-\subsection{第一节第一小节}
 
 \begin{frame}{文本测试}
 这是一段测试文字。这是一段测试文字。这是一段测试文字。这是一段测试文字。这是一段测试文字。这是一段测试文字。
@@ -132,21 +130,8 @@
 
 \end{frame}
 
-%------------------------------------------------
+%-----------------------------------------------
 
-\begin{frame}
-\frametitle{Bullet Points}
-\begin{itemize}[<+-| alert@+>]
-\item Lorem ipsum dolor sit amet, consectetur adipiscing elit
-\item Aliquam blandit faucibus nisi, sit amet dapibus enim tempus eu
-\item Nulla commodo, erat quis gravida posuere, elit lacus lobortis est, quis porttitor odio mauris at libero
-\item Nam cursus est eget velit posuere pellentesque
-\item Vestibulum faucibus velit a augue condimentum quis convallis nulla gravida
-\end{itemize}
-\end{frame}
-
-%------------------------------------------------
-\subsection{第一节第二小节}
 \begin{frame}
 \frametitle{Blocks of Highlighted Text}
 \begin{block}{Block 1}
@@ -160,6 +145,20 @@ Pellentesque sed tellus purus. Class aptent taciti sociosqu ad litora torquent p
 \begin{alertblock}{Block 3}
 Suspendisse tincidunt sagittis gravida. Curabitur condimentum, enim sed venenatis rutrum, ipsum neque consectetur orci, sed blandit justo nisi ac lacus.
 \end{alertblock}
+\end{frame}
+
+%------------------------------------------------
+\section{列表环境}
+
+\begin{frame}
+\frametitle{Bullet Points}
+\begin{itemize}[<+-| alert@+>]
+\item Lorem ipsum dolor sit amet, consectetur adipiscing elit
+\item Aliquam blandit faucibus nisi, sit amet dapibus enim tempus eu
+\item Nulla commodo, erat quis gravida posuere, elit lacus lobortis est, quis porttitor odio mauris at libero
+\item Nam cursus est eget velit posuere pellentesque
+\item Vestibulum faucibus velit a augue condimentum quis convallis nulla gravida
+\end{itemize}
 \end{frame}
 
 %------------------------------------------------
@@ -183,9 +182,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ul
 \end{frame}
 
 %------------------------------------------------
-\section{第二节}
+\section{表格与定理}
 %------------------------------------------------
-\subsection{第二节第一小节}
+
 \begin{frame}
 \frametitle{表格和引理}
 \begin{table}
@@ -210,6 +209,7 @@ Treatment 3 & 0.0009271 & 0.296 \\
 
 %------------------------------------------------
 
+
 \begin{frame}
 \frametitle{定理}
 
@@ -231,13 +231,34 @@ has a unique solution. Moreover, we have
 
 \end{frame}
 
+%------------------------------------------------
+
+\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
+\frametitle{Verbatim}
+\begin{exam}[Theorem Slide Code]
+\begin{verbatim}
+\begin{frame}
+\frametitle{Theorem}
+\begin{theorem}[Mass--energy equivalence]
+$E = mc^2$
+\end{theorem}
+\end{frame}\end{verbatim}
+\end{exam}
+
+\begin{thm}[Mass--energy]
+$E = mc^2$
+\end{thm}
+
+\end{frame}
+
+
 \begin{frame}
 \frametitle{论文进度安排}
 \begin{table}[htp!]
 \centering
 \renewcommand\arraystretch{1.5} %定义表格高度
 % PLCR前面已经定义
-\begin{tabularx}{0.82\textwidth}{|P{3.2cm}|C|}
+\begin{tabularx}{0.92\textwidth}{|P{3.2cm}|C|}
 \Xhline{2\arrayrulewidth}
 论文起止时间       &  论文筹备过程\\
 \hline
@@ -260,30 +281,10 @@ has a unique solution. Moreover, we have
 
 \end{frame}
 
-\subsection{第二节第二小节}
-%------------------------------------------------
-
-\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
-\frametitle{Verbatim}
-\begin{exam}[Theorem Slide Code]
-\begin{verbatim}
-\begin{frame}
-\frametitle{Theorem}
-\begin{theorem}[Mass--energy equivalence]
-$E = mc^2$
-\end{theorem}
-\end{frame}\end{verbatim}
-\end{exam}
-
-\begin{thm}[Mass--energy]
-$E = mc^2$
-\end{thm}
-
-\end{frame}
 
 %------------------------------------------------
 
-
+\section{插图环境}
 
 \begin{frame}
 \frametitle{Figure}
@@ -315,8 +316,8 @@ Uncomment the code on this slide to include your own image from the same directo
 \end{figure}
 \end{frame}
 
-
-
+%------------------------------------------------
+\section{参考文献}
 %------------------------------------------------
 
 \begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
@@ -337,12 +338,13 @@ This statement requires citation \cite{p1}.
 }
 \end{frame}
 
+
 %------------------------------------------------
-%\thispagestyle{empty}
 %\setbeamertemplate{background canvas}[vertical shading][bottom=white,top=structure.fg!25]
-\begin{frame}{}
+%\setbeamertemplate{headline}{}
+\begin{frame}
 \begin{center}
-\HUGE{\textcolor[RGB]{165,3,3}{Thank you!}}
+\HUGE{\textcolor[RGB]{165,3,3}{Thank~you!}}
 \end{center}
 \end{frame}
 
