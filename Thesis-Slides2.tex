@@ -59,7 +59,10 @@
 \usepackage{color,xcolor}
 \usepackage{cases}
 \usepackage{mathtools}
-\usepackage{zhlipsum}
+%\usepackage{zhlipsum}
+
+%----------- 定义行距 ---------------
+\renewcommand{\baselinestretch}{1.15}
 
 % 定义新表格命令
 \newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
@@ -293,7 +296,7 @@ $E = mc^2$
 \frametitle{论文进度安排}
 \begin{table}[htp!]
 \centering
-\renewcommand\arraystretch{1.5} %定义表格高度
+\renewcommand\arraystretch{1.3} %定义表格高度
 % PLCR前面已经定义
 \begin{tabularx}{0.92\textwidth}{|P{3.2cm}|C|}
 \Xhline{2\arrayrulewidth}
