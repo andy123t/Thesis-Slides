@@ -1,5 +1,5 @@
 % Thesis Presentation
-% compile using PDFTeXify, PDFLaTeX or XeLaTeX
+% compile using PDFTeXify or PDFLaTeX
 \documentclass[11pt]{beamer}
 
 \mode<presentation>{
@@ -7,7 +7,8 @@
 \usetheme{Madrid}
 \setbeamertemplate{theorems}[numbered]
 %\setbeamercovered{transparent}
-\usefonttheme[onlymath]{serif}
+%\usefonttheme[onlymath]{serif}
+\usefonttheme{serif}
 %\usetheme{boxes}
 \setbeamertemplate{navigation symbols}{}
 %\setbeamertemplate{itemize items}[square]  % ball, circle
@@ -90,7 +91,7 @@
 
 \author[学生姓名]
 {
-  报告人：学生姓名~~~ \vskip 3mm
+  报告人：学生姓名~~ \vskip 3mm
   专业：专业名称 \vskip 3mm
   指导教师：导师姓名 ~ 职称 \vskip 3mm
   研究方向：专业研究方向
@@ -202,7 +203,7 @@ Treatment 3 & 0.0009271 & 0.296 \\
 \bottomrule
 \end{tabular}
 \end{table}
-\begin{lmm}
+\begin{lmm} \upshape
   For any $v \in H_{A}^{r}(\Lambda)$ and $r \geq 0$,
   \begin{equation}
     \|P_{N} v-v\| \leq c N^{-r}\|v\|_{r, A}.
@@ -216,7 +217,7 @@ Treatment 3 & 0.0009271 & 0.296 \\
 \begin{frame}
 \frametitle{定理}
 
-\begin{thm}[Lax-Milgram Lemma]
+\begin{thm}[Lax-Milgram Lemma] \upshape
 Let $X$ be a Hilbert space, let $a(\cdot, \cdot)$ : $X \times X \rightarrow \mathbb{R}$ be a continuous and coercive bilinear form, and let $F : X \rightarrow \mathbb{R}$ be a linear functional in $X^{\prime}$. Then the variational problem:
 \begin{equation}
   \alert{
@@ -248,7 +249,7 @@ $E = mc^2$
 \end{frame}\end{verbatim}
 \end{exam}
 
-\begin{thm}[Mass--energy]
+\begin{thm}[Mass--energy] \upshape 
 $E = mc^2$
 \end{thm}
 
@@ -346,6 +347,7 @@ This statement requires citation \cite{p1}.
 %\setbeamertemplate{background canvas}[vertical shading][bottom=white,top=structure.fg!25]
 %\setbeamertemplate{headline}{}
 \begin{frame}
+\sffamily 
 \begin{center}
 \HUGE{\textcolor[RGB]{165,3,3}{Thank~you!}}
 \end{center}
