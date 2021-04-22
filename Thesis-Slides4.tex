@@ -4,20 +4,21 @@
 
 \mode<presentation>{
 \setbeamertemplate{blocks}[rounded][shadow=true]
-\usetheme{Madrid}     % Beamer theme
-%\usetheme{CambridgeUS}
-%\usetheme{Copenhagen}
-%\usetheme{Frankfurt} 
+\usetheme{CambridgeUS}     % Beamer theme
+%\usecolortheme{orchid}    % color theme
 \usecolortheme{rose}  % color theme
 
-%\setbeamercovered{transparent}
+\setbeamercovered{transparent}
 %\usefonttheme[onlymath]{serif}
 \usefonttheme{serif}
+%\usefonttheme{professionalfonts}
 %\usetheme{boxes}
 \setbeamertemplate{navigation symbols}{}
 %\setbeamertemplate{itemize items}[square]  % ball, circle
-\setbeamertemplate{enumerate items}[square]
+%\setbeamertemplate{enumerate items}[square]
 %\setbeamertemplate{section in toc}[square]
+%\setbeamertemplate{section in toc}[sections numbered]
+%\setbeamertemplate{subsection in toc}[subsections numbered]
 }
 
 %--------- 宏包  ----------
@@ -33,6 +34,8 @@
 \usepackage{cases}
 \usepackage{mathtools}
 %\usepackage{zhlipsum}
+
+
 
 %----------- 定义行距 ---------------
 \renewcommand{\baselinestretch}{1.15}
@@ -84,34 +87,59 @@
 \numberwithin{table}{section}
 \numberwithin{equation}{section}
 
+
+% ---- 重新定义标题页 -------
+\makeatletter
+\def\defmajor{}
+\def\defstudy{}
+\def\defadvisor{}
+\newcommand{\major}[1]{\def\defmajor{#1}}
+\newcommand{\study}[1]{\def\defstudy{#1}}
+\newcommand{\advisor}[1]{\def\defadvisor{#1}}
+\makeatother
+
+\defbeamertemplate*{title page}{customized}[1][]{
+\begin{center}
+  {\makebox[160pt][s]{\bf\large\number\year\,届硕士学位论文答辩}}\\[2em]
+  {\color[rgb]{0.50,0.00,0.00}\parbox[t]{10cm}{\Large\bfseries\centering \inserttitle}}\\[2em]
+  \begin{tabular}{p{64pt}@{}c}
+  \makebox[4em][s]{\kaishu 答辩人}~:&{\kaishu \insertauthor}\\[2pt]
+  \makebox[4em][s]{\kaishu 专业}~:&{\kaishu \defmajor}\\[2pt]
+  \makebox[4em][s]{\kaishu 指导教师}~:&{\kaishu \defadvisor}\\[2pt]
+  \makebox[4em][s]{\kaishu 研究方向}~:&{\kaishu \defstudy}\\[2pt]
+\end{tabular}
+\vskip 2em
+\usebeamerfont{date}\insertdate
+%\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic
+\end{center}
+}
+
+
 \makeatletter
 \newcommand\HUGE{\@setfontsize\Huge{36}{42}}
 \makeatother
 
 
-\AtBeginSection[]{
-\begin{frame}
-  \frametitle{Outline} %\small
-  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
-  \addtocounter{framenumber}{-1}
-\end{frame}
-}
+%\AtBeginSection[]{
+%\begin{frame}
+%  \frametitle{Outline} %\small
+%  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
+%  \addtocounter{framenumber}{-1}
+%\end{frame}
+%}
+
 
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
-\title[论文题目]{毕业论文题目毕业论文题目毕业论文题目}
+\title[论文题目]{毕业论文题目毕业论文题目毕业论文题目\\ Title 毕业论文题目毕业论文题目}
 
-\author[学生姓名]
-{
-    答辩人：学生姓名~~ \vskip 3mm
-    % 报告人：学生姓名~~ \vskip 3mm
-    专业：专业名称 \vskip 3mm
-    指导教师：导师姓名 ~ 职称 \vskip 3mm
-    研究方向：专业研究方向
-}
-%\author[姓名]{报告人姓名}
+\author[学生姓名]{学生姓名}
+\advisor{某某某~~教授}
+\major{专业名称}  % 专业名称
+\study{专业方向名称}
+
 
 \institute[学校名称]{}
 %\institute[学校名称]{\normalsize 学校名称}
@@ -408,8 +436,6 @@ This statement requires citation \cite{Smith2012}. \\~
 
 
 %------------------------------------------------
-
-%\thispagestyle{empty}
 %\setbeamertemplate{background canvas}[vertical shading][bottom=white,top=structure.fg!25]
 %\setbeamertemplate{headline}{}
 \begin{frame}
