@@ -20,11 +20,11 @@
 ```
 
 
-Beamer 主题为 Madrid，颜色主题为 rose，可以根据需要修改。
+Beamer 主题和颜色主题可以根据需要修改。
 
 ```latex
-\usetheme{Madrid}
-\usecolortheme{rose}
+\usetheme{Madrid}  % Beamer theme
+\usecolortheme{rose}  % Color theme
 ```
 
 **注意：** 编译请使用 PDFTeXify 或 PDFLaTeX 编译运行，否则部分数学符号显示可能有问题。
