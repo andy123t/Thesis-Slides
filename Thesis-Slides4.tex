@@ -4,10 +4,14 @@
 
 \mode<presentation>{
 \setbeamertemplate{blocks}[rounded][shadow=true]
-\usetheme{CambridgeUS}     % Beamer theme
-%\usecolortheme{orchid}    % color theme
-\usecolortheme{rose}  % color theme
-
+\usetheme{CambridgeUS}   % Beamer theme
+%\usetheme{Madrid}
+%\usetheme{Boadilla}
+%\usetheme{Frankfurt}
+%\usetheme{Warsaw}
+%\usetheme{Montpellier}
+\usecolortheme{rose}     % color theme
+%\usecolortheme{orchid}
 \setbeamercovered{transparent}
 %\usefonttheme[onlymath]{serif}
 \usefonttheme{serif}
@@ -23,7 +27,7 @@
 
 %--------- 宏包  ----------
 \usepackage[UTF8,noindent]{ctex}
-\usepackage[english]{babel} %show english numerate
+\usepackage[english]{babel}
 \usepackage{amsmath,amssymb,version}
 \usepackage{graphicx,fancybox,mathrsfs,multirow}
 \usepackage{booktabs}
@@ -33,19 +37,15 @@
 \usepackage{color,xcolor}
 \usepackage{cases}
 \usepackage{mathtools}
-%\usepackage{zhlipsum}
-
-
 
 %----------- 定义行距 ---------------
 \renewcommand{\baselinestretch}{1.15}
 
-% 定义新表格命令
+%---------- 定义表格新命令 -----------
 \newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
 \newcolumntype{L}{>{\quad}X}
 \newcolumntype{C}{>{\centering \arraybackslash}X}
 \newcolumntype{R}{>{\raggedright \arraybackslash}X}
-
 
 %---------- 设置中文字体  ---------------
 \setbeamerfont{normal text}{family=\kaishu}
@@ -58,6 +58,11 @@
 \setbeamerfont{footline}{size=\kaishu}
 \setbeamerfont{section in toc}{family=\kaishu}
 \setbeamerfont{subsection in toc}{family=\kaishu}
+
+\setbeamertemplate{caption}[numbered]
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+\numberwithin{equation}{section}
 
 %---------- 定理设置  --------------
 \setbeamertemplate{theorems}[numbered]
@@ -80,13 +85,17 @@
 %\newtheorem{example}{Example}
 \newtheorem{example}{例}
 %\numberwithin{example}{section}
-\renewcommand{\proofname}{\heiti 证明}
+\renewenvironment{proof}[1][证明]{\textbf{#1}:~}{\qed\par}
 
-\setbeamertemplate{caption}[numbered]
-\numberwithin{figure}{section}
-\numberwithin{table}{section}
-\numberwithin{equation}{section}
 
+%---------- 调节公式的间距 --------
+%\AtBeginDocument{
+%	\setlength{\abovedisplayskip}{4pt plus 1pt minus 1pt}
+%	\setlength{\belowdisplayskip}{4pt plus 1pt minus 1pt}
+%	\setlength{\abovedisplayshortskip}{2pt}
+%	\setlength{\belowdisplayshortskip}{2pt}
+%	\setlength{\arraycolsep}{2pt}
+%}
 
 % ---- 重新定义标题页 -------
 \makeatletter
@@ -256,10 +265,13 @@ This is a lemma environment. 这是一个引理环境.
 This is a proposition environment. 这是一个命题环境.
 \end{proposition}
 
-
 \begin{theorem}[Mass--energy] \upshape
 This is a theorem environment. 这是一个定理环境.
 \end{theorem}
+
+\begin{proof}
+  This is a proof environment. 这是一个证明环境.
+\end{proof}
 
 \end{frame}
 
@@ -279,7 +291,6 @@ Let $X$ be a Hilbert space, let $a(\cdot, \cdot)$ : $X \times X \rightarrow \mat
   \end{aligned} \right. }
 \end{equation}
 has a unique solution. Moreover, we have
-
 \begin{equation}
   \alert{ \|u\| \leq \frac{1}{\alpha}\|F\|_{X^{\prime}}  }
 \end{equation}
@@ -436,7 +447,6 @@ This statement requires citation \cite{Smith2012}. \\~
 
 
 %------------------------------------------------
-%\setbeamertemplate{background canvas}[vertical shading][bottom=white,top=structure.fg!25]
 %\setbeamertemplate{headline}{}
 \begin{frame}
 \sffamily
@@ -445,6 +455,6 @@ This statement requires citation \cite{Smith2012}. \\~
 \end{center}
 \end{frame}
 
-%----------------------------------------------------------------------------------------
 
 \end{document}
+

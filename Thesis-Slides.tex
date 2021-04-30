@@ -1,19 +1,22 @@
 % Thesis Presentation
 % compile using PDFTeXify or PDFLaTeX
-\documentclass[notheorems,11pt]{beamer}
+\documentclass[notheorems,11pt,compress]{beamer}
 
 \mode<presentation>{
 \setbeamertemplate{blocks}[rounded][shadow=true]
 \usetheme{Madrid}     % Beamer theme
-%\usetheme{CambridgeUS}
-%\usetheme{Copenhagen}
-%\usetheme{Frankfurt} 
+%\usetheme{Boadilla}
+%\usetheme{Frankfurt}
+%\usetheme{Warsaw}
+%\usetheme{Montpellier}
 \usecolortheme{rose}  % color theme
+%\usecolortheme{orchid}
 
 %\setbeamercovered{transparent}
 %\usefonttheme[onlymath]{serif}
 \usefonttheme{serif}
 %\usetheme{boxes}
+%\setbeamertemplate{headline}{}
 \setbeamertemplate{navigation symbols}{}
 %\setbeamertemplate{itemize items}[square]  % ball, circle
 \setbeamertemplate{enumerate items}[square]
@@ -51,10 +54,14 @@
 \setbeamerfont{subtitle}{family=\kaishu}
 \setbeamerfont{institute}{family=\kaishu}
 \setbeamerfont{author}{family=\kaishu}
-\setbeamerfont{headline}{family=\sffamily}
 \setbeamerfont{footline}{size=\kaishu}
 \setbeamerfont{section in toc}{family=\kaishu}
 \setbeamerfont{subsection in toc}{family=\kaishu}
+
+\setbeamertemplate{caption}[numbered]
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+\numberwithin{equation}{section}
 
 %---------- 定理设置  --------------
 \setbeamertemplate{theorems}[numbered]
@@ -77,12 +84,18 @@
 %\newtheorem{example}{Example}
 \newtheorem{example}{例}
 %\numberwithin{example}{section}
-\renewcommand{\proofname}{\heiti 证明}
+\renewenvironment{proof}[1][证明]{\textbf{#1}:~}{\qed\par}
 
-\setbeamertemplate{caption}[numbered]
-\numberwithin{figure}{section}
-\numberwithin{table}{section}
-\numberwithin{equation}{section}
+
+%---------- 调节公式的间距 --------
+%\AtBeginDocument{
+%	\setlength{\abovedisplayskip}{4pt plus 1pt minus 1pt}
+%	\setlength{\belowdisplayskip}{4pt plus 1pt minus 1pt}
+%	\setlength{\abovedisplayshortskip}{2pt}
+%	\setlength{\belowdisplayshortskip}{2pt}
+%	\setlength{\arraycolsep}{2pt}
+%}
+
 
 \makeatletter
 \newcommand\HUGE{\@setfontsize\Huge{36}{42}}
@@ -228,10 +241,13 @@ This is a lemma environment. 这是一个引理环境.
 This is a proposition environment. 这是一个命题环境.
 \end{proposition}
 
-
 \begin{theorem}[Mass--energy] \upshape
 This is a theorem environment. 这是一个定理环境.
 \end{theorem}
+
+\begin{proof}
+  This is a proof environment. 这是一个证明环境.
+\end{proof}
 
 \end{frame}
 
@@ -251,7 +267,6 @@ Let $X$ be a Hilbert space, let $a(\cdot, \cdot)$ : $X \times X \rightarrow \mat
   \end{aligned} \right. }
 \end{equation}
 has a unique solution. Moreover, we have
-
 \begin{equation}
   \alert{ \|u\| \leq \frac{1}{\alpha}\|F\|_{X^{\prime}}  }
 \end{equation}
@@ -408,8 +423,6 @@ This statement requires citation \cite{Smith2012}. \\~
 
 
 %------------------------------------------------
-
-%\thispagestyle{empty}
 %\setbeamertemplate{background canvas}[vertical shading][bottom=white,top=structure.fg!25]
 %\setbeamertemplate{headline}{}
 \begin{frame}

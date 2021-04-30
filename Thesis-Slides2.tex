@@ -2,12 +2,10 @@
 % compile using PDFTeXify or PDFLaTeX
 \documentclass[notheorems,11pt,compress]{beamer}
 
-\mode<presentation> {
+\mode<presentation>{
 \setbeamertemplate{blocks}[rounded][shadow=true]
-%\usetheme{Madrid}
-%\usetheme{Warsaw}
-\usetheme{Montpellier}
-\usecolortheme{rose}  % color theme
+\usetheme{Montpellier}  % Beamer theme
+\usecolortheme{rose}    % color theme
 \setbeamertemplate{theorems}[numbered]
 %\setbeamercovered{transparent}
 %\usefonttheme[onlymath]{serif}
@@ -24,10 +22,9 @@
   \insertframenumber \,/\,\inserttotalframenumber
   \kern1em\vskip2pt%
 }
-
 }
 
-\setbeamertemplate{headline}{ % navigation bar of section (second headline)
+\setbeamertemplate{headline}{	% navigation bar of section (second headline)
 \begin{beamercolorbox}{section in head/foot}
    \vskip2pt\insertnavigation{\paperwidth}\vskip2pt
 \end{beamercolorbox}
@@ -50,7 +47,6 @@
 
 
 %--------- 宏包  ----------
-%--------- 宏包  ----------
 \usepackage[UTF8,noindent]{ctex}
 \usepackage[english]{babel} %show english numerate
 \usepackage{amsmath,amssymb,version}
@@ -67,7 +63,7 @@
 %----------- 定义行距 ---------------
 \renewcommand{\baselinestretch}{1.15}
 
-% 定义新表格命令
+%--------- 定义表格新命令 ---------------
 \newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
 \newcolumntype{L}{>{\quad}X}
 \newcolumntype{C}{>{\centering \arraybackslash}X}
@@ -86,6 +82,10 @@
 \setbeamerfont{section in toc}{family=\kaishu}
 \setbeamerfont{subsection in toc}{family=\kaishu}
 
+\setbeamertemplate{caption}[numbered]
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+\numberwithin{equation}{section}
 
 %---------- 定理设置  --------------
 \setbeamertemplate{theorems}[numbered]
@@ -108,12 +108,18 @@
 %\newtheorem{example}{Example}
 \newtheorem{example}{例}
 %\numberwithin{example}{section}
-\renewcommand{\proofname}{\heiti 证明}
+\renewenvironment{proof}[1][证明]{\textbf{#1}:~}{\qed\par}
 
-\setbeamertemplate{caption}[numbered]
-\numberwithin{figure}{section}
-\numberwithin{table}{section}
-\numberwithin{equation}{section}
+
+%---------- 调节公式的间距 --------
+%\AtBeginDocument{
+%	\setlength{\abovedisplayskip}{4pt plus 1pt minus 1pt}
+%	\setlength{\belowdisplayskip}{4pt plus 1pt minus 1pt}
+%	\setlength{\abovedisplayshortskip}{2pt}
+%	\setlength{\belowdisplayshortskip}{2pt}
+%	\setlength{\arraycolsep}{2pt}
+%}
+
 
 \makeatletter
 \newcommand\HUGE{\@setfontsize\Huge{36}{42}}
@@ -122,15 +128,6 @@
 % 定义文字颜色
 \newcommand{\red}[1]{\textcolor{red}{#1}}
 \newcommand{\blue}[1]{\textcolor{blue}{#1}}
-
-
-%\AtBeginSection[]
-%{ \begin{frame}
-%    \frametitle{Outline}
-%    \tableofcontents[currentsection,hideallsubsections] %currentsubsection
-%  \end{frame}
-%  \addtocounter{framenumber}{-1}  %目录页不计算页码
-%}
 
 
 %----------------------------------------------------------------------------------------
@@ -265,10 +262,13 @@ This is a lemma environment. 这是一个引理环境.
 This is a proposition environment. 这是一个命题环境.
 \end{proposition}
 
-
 \begin{theorem}[Mass--energy] \upshape
 This is a theorem environment. 这是一个定理环境.
 \end{theorem}
+
+\begin{proof}
+  This is a proof environment. 这是一个证明环境.
+\end{proof}
 
 \end{frame}
 
@@ -288,7 +288,6 @@ Let $X$ be a Hilbert space, let $a(\cdot, \cdot)$ : $X \times X \rightarrow \mat
   \end{aligned} \right. }
 \end{equation}
 has a unique solution. Moreover, we have
-
 \begin{equation}
   \alert{ \|u\| \leq \frac{1}{\alpha}\|F\|_{X^{\prime}}  }
 \end{equation}
@@ -444,12 +443,12 @@ This statement requires citation \cite{Smith2012}. \\~
 \end{frame}
 
 
+
 %------------------------------------------------
 
 % get rid of navigation bars in beamer
 \miniframesoff
 
-%\setbeamertemplate{background canvas}[vertical shading][bottom=white,top=structure.fg!25]
 \setbeamertemplate{headline}{}
 \begin{frame}
 \sffamily
@@ -458,6 +457,5 @@ This statement requires citation \cite{Smith2012}. \\~
 \end{center}
 \end{frame}
 
-%----------------------------------------------------------------------------------------
 
 \end{document}
