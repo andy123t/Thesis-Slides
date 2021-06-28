@@ -4,12 +4,14 @@
 
 \mode<presentation>{
 \setbeamertemplate{blocks}[rounded][shadow=true]
-\usetheme{Madrid}     % Beamer theme
+% ---- Beamer theme ----
+\usetheme{Madrid}
 %\usetheme{Boadilla}
 %\usetheme{Frankfurt}
 %\usetheme{Warsaw}
 %\usetheme{Montpellier}
-\usecolortheme{rose}  % color theme
+% ---- color theme ----
+\usecolortheme{rose}
 %\usecolortheme{orchid}
 
 %\setbeamercovered{transparent}
@@ -25,7 +27,7 @@
 
 %--------- 宏包  ----------
 \usepackage[UTF8,noindent]{ctex}
-\usepackage[english]{babel} %show english numerate
+%\usepackage[english]{babel} %show english numerate
 \usepackage{amsmath,amssymb,version}
 \usepackage{graphicx,fancybox,mathrsfs,multirow}
 \usepackage{booktabs}
@@ -48,15 +50,16 @@
 
 
 %---------- 设置中文字体  ---------------
-\setbeamerfont{normal text}{family=\kaishu}
+\setbeamerfont{normal text}{family=\songti}
 \setbeamerfont{frametitle}{family=\kaishu}
 \setbeamerfont{title}{family=\kaishu}
 \setbeamerfont{subtitle}{family=\kaishu}
 \setbeamerfont{institute}{family=\kaishu}
 \setbeamerfont{author}{family=\kaishu}
-\setbeamerfont{footline}{size=\kaishu}
+\setbeamerfont{footline}{family=\kaishu}
 \setbeamerfont{section in toc}{family=\kaishu}
 \setbeamerfont{subsection in toc}{family=\kaishu}
+\AtBeginDocument{\usebeamerfont{normal text}}
 
 \setbeamertemplate{caption}[numbered]
 \numberwithin{figure}{section}
@@ -134,7 +137,7 @@
 \graphicspath{{./Figures/}}
 
 \begin{document}
-\songti
+
 
 \begin{frame}
 \titlepage

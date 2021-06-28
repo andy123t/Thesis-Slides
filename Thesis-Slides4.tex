@@ -4,14 +4,17 @@
 
 \mode<presentation>{
 \setbeamertemplate{blocks}[rounded][shadow=true]
-\usetheme{CambridgeUS}   % Beamer theme
+% ---- Beamer theme ----
+\usetheme{CambridgeUS}
 %\usetheme{Madrid}
 %\usetheme{Boadilla}
 %\usetheme{Frankfurt}
 %\usetheme{Warsaw}
 %\usetheme{Montpellier}
-\usecolortheme{rose}     % color theme
+% ---- color theme ----
+\usecolortheme{rose}
 %\usecolortheme{orchid}
+
 \setbeamercovered{transparent}
 %\usefonttheme[onlymath]{serif}
 \usefonttheme{serif}
@@ -27,7 +30,7 @@
 
 %--------- 宏包  ----------
 \usepackage[UTF8,noindent]{ctex}
-\usepackage[english]{babel}
+%\usepackage[english]{babel}
 \usepackage{amsmath,amssymb,version}
 \usepackage{graphicx,fancybox,mathrsfs,multirow}
 \usepackage{booktabs}
@@ -48,16 +51,17 @@
 \newcolumntype{R}{>{\raggedright \arraybackslash}X}
 
 %---------- 设置中文字体  ---------------
-\setbeamerfont{normal text}{family=\kaishu}
+\setbeamerfont{normal text}{family=\songti}
 \setbeamerfont{frametitle}{family=\kaishu}
 \setbeamerfont{title}{family=\kaishu}
 \setbeamerfont{subtitle}{family=\kaishu}
 \setbeamerfont{institute}{family=\kaishu}
 \setbeamerfont{author}{family=\kaishu}
 \setbeamerfont{headline}{family=\sffamily}
-\setbeamerfont{footline}{size=\kaishu}
+\setbeamerfont{footline}{family=\kaishu}
 \setbeamerfont{section in toc}{family=\kaishu}
 \setbeamerfont{subsection in toc}{family=\kaishu}
+\AtBeginDocument{\usebeamerfont{normal text}}
 
 \setbeamertemplate{caption}[numbered]
 \numberwithin{figure}{section}
@@ -158,7 +162,7 @@
 \graphicspath{{./Figures/}}
 
 \begin{document}
-\songti
+
 
 \begin{frame}
 \titlepage
