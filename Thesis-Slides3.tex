@@ -50,12 +50,14 @@
 \usepackage{mathtools}
 %\usepackage{zhlipsum}
 
+%----------- 定义行距 ---------------
+\renewcommand{\baselinestretch}{1.15}
+
 %----------- 定义新表格命令 -------------
 \newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
 \newcolumntype{L}{>{\quad}X}
 \newcolumntype{C}{>{\centering \arraybackslash}X}
 \newcolumntype{R}{>{\raggedright \arraybackslash}X}
-
 
 
 %---------- 设置中文字体  ---------------
@@ -65,6 +67,7 @@
 \setbeamerfont{subtitle}{family=\kaishu}
 \setbeamerfont{institute}{family=\kaishu}
 \setbeamerfont{author}{family=\kaishu}
+%\setbeamerfont{date}{family=\kaishu}
 \setbeamerfont{headline}{family=\sffamily}
 \setbeamerfont{footline}{family=\kaishu}
 \setbeamerfont{section in toc}{family=\kaishu}
@@ -116,6 +119,10 @@
 
 \bibliographystyle{apalike}
 
+% 自定义命令
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+
 
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
@@ -138,10 +145,10 @@
 
 \date[2021.x.x]{2021.x.x}
 
-\graphicspath{{./Figures/}}
+\graphicspath{{./figures/}}
 
 \begin{document}
-\songti
+
 
 \begin{frame}
 \titlepage

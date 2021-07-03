@@ -1,6 +1,6 @@
 % Thesis Presentation
 % compile using PDFTeXify or PDFLaTeX
-\documentclass[notheorems,11pt]{beamer}
+\documentclass[notheorems,11pt,compress]{beamer}
 
 \mode<presentation>{
 \setbeamertemplate{blocks}[rounded][shadow=true]
@@ -57,6 +57,7 @@
 \setbeamerfont{subtitle}{family=\kaishu}
 \setbeamerfont{institute}{family=\kaishu}
 \setbeamerfont{author}{family=\kaishu}
+%\setbeamerfont{date}{family=\kaishu}
 \setbeamerfont{headline}{family=\sffamily}
 \setbeamerfont{footline}{family=\kaishu}
 \setbeamerfont{section in toc}{family=\kaishu}
@@ -133,6 +134,11 @@
 \makeatother
 
 
+% 自定义命令
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+
+
 %\AtBeginSection[]{
 %\begin{frame}
 %  \frametitle{Outline} %\small
@@ -159,7 +165,7 @@
 
 \date[2021.x.x]{2021.x.x}
 
-\graphicspath{{./Figures/}}
+\graphicspath{{./figures/}}
 
 \begin{document}
 
