@@ -1,33 +1,51 @@
-% Thesis Presentation
-% compile using PDFTeXify or PDFLaTeX
+%======================================================%
+%   Beamer Presentation
+%   LaTeX Template
+%   compile using PDFTeXify or PDFLaTeX
+%======================================================%
+
+%--------------------------------------------------------------------------------
+%   PACKAGES AND THEMES
+%--------------------------------------------------------------------------------
+
 \documentclass[notheorems,11pt,compress]{beamer}
 
 \mode<presentation>{
-\setbeamertemplate{blocks}[rounded][shadow=true]
-% ---- Beamer theme ----
+
+%------- Beamer theme ------
 \usetheme{Madrid}
 %\usetheme{Boadilla}
 %\usetheme{Frankfurt}
 %\usetheme{Warsaw}
+%\usetheme{CambridgeUS}
 %\usetheme{Montpellier}
-% ---- color theme ----
+
+%------- Color theme ------
 \usecolortheme{rose}
 %\usecolortheme{orchid}
+%\usecolortheme{lily}
+%\usecolortheme{whale}
+%\usecolortheme{dolphin}
+%\usecolortheme{seahorse}
 
 %\setbeamercovered{transparent}
 %\usefonttheme[onlymath]{serif}
 \usefonttheme{serif}
 %\usetheme{boxes}
+
 %\setbeamertemplate{headline}{}
+%\setbeamertemplate{footline}{}
+\setbeamertemplate{blocks}[rounded][shadow=true]
 \setbeamertemplate{navigation symbols}{}
 %\setbeamertemplate{itemize items}[square]  % ball, circle
 \setbeamertemplate{enumerate items}[square]
 %\setbeamertemplate{section in toc}[square]
+
 }
 
 %--------- 宏包  ----------
 \usepackage[UTF8,noindent]{ctex}
-%\usepackage[english]{babel} %show english numerate
+%\usepackage[english]{babel}
 \usepackage{amsmath,amssymb,version}
 \usepackage{graphicx,fancybox,mathrsfs,multirow}
 \usepackage{booktabs}
@@ -37,19 +55,19 @@
 \usepackage{color,xcolor}
 \usepackage{cases}
 \usepackage{mathtools}
-%\usepackage{zhlipsum}
+\usepackage{tikz}
 
-%----------- 定义行距 ---------------
+%---------- 定义行距 ----------
 \renewcommand{\baselinestretch}{1.15}
 
-% 定义新表格命令
+%---------- 定义表格新命令 ----------
 \newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
 \newcolumntype{L}{>{\quad}X}
 \newcolumntype{C}{>{\centering \arraybackslash}X}
 \newcolumntype{R}{>{\raggedright \arraybackslash}X}
 
 
-%---------- 设置中文字体  ---------------
+%---------- 设置字体  ----------
 \setbeamerfont{normal text}{family=\songti}
 \setbeamerfont{frametitle}{family=\kaishu}
 \setbeamerfont{title}{family=\kaishu}
@@ -82,7 +100,7 @@
 \newtheorem{proposition}{命题}
 \numberwithin{proposition}{section}
 %\newtheorem{corollary}{Corollary}
-\newtheorem{corollary}{引理}
+\newtheorem{corollary}{推论}
 \numberwithin{corollary}{section}
 \theoremstyle{example}
 %\newtheorem{example}{Example}
@@ -91,7 +109,7 @@
 \renewenvironment{proof}[1][证明]{\textbf{#1}:~}{\qed\par}
 
 
-%---------- 调节公式的间距 --------
+%---------- 调节公式的间距 ----------
 %\AtBeginDocument{
 %	\setlength{\abovedisplayskip}{4pt plus 1pt minus 1pt}
 %	\setlength{\belowdisplayskip}{4pt plus 1pt minus 1pt}
@@ -115,14 +133,14 @@
 }
 
 
-% 自定义命令
+%---------- 自定义命令 ----------
 \newcommand{\red}[1]{\textcolor{red}{#1}}
 \newcommand{\blue}[1]{\textcolor{blue}{#1}}
 
 
-%----------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------
 %	TITLE PAGE
-%----------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------
 
 \title[论文题目]{毕业论文题目毕业论文题目毕业论文题目}
 
@@ -155,9 +173,9 @@
 \tableofcontents
 \end{frame}
 
-%----------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------
 %	PRESENTATION SLIDES
-%----------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------
 
 %------------------------------------------------
 \section{文本与 Block}
@@ -263,7 +281,6 @@ This is a theorem environment. 这是一个定理环境.
 
 %------------------------------------------------
 
-
 \begin{frame}
 \frametitle{定理示例}
 
@@ -300,7 +317,7 @@ $E = mc^2$
 
 \begin{table}
 \caption{这是一个三线表.}
-\begin{tabular}{l l l}
+\begin{tabular}{lll}
 \toprule
 \textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
 \midrule
@@ -313,7 +330,7 @@ Treatment 2 & 0.0015681 & 0.910 \\
 \end{frame}
 
 
-% ----------------------------------------
+%------------------------------------------------
 
 \begin{frame}
 \frametitle{表格环境}
@@ -321,7 +338,7 @@ Treatment 2 & 0.0015681 & 0.910 \\
 \begin{table}[!htp]
 \centering
 % PLCR已经定义
-\caption{某校学生升高体重样本.}
+\caption{某校学生身高体重样本.}
 \label{tab2:heightweight}
 \begin{tabularx}{0.9\textwidth}{lCCC}
    \toprule
@@ -340,7 +357,7 @@ Treatment 2 & 0.0015681 & 0.910 \\
 \end{frame}
 
 
-% ------------------------------------------
+%------------------------------------------------
 
 \begin{frame}
 \frametitle{论文进度安排}
@@ -442,6 +459,6 @@ This statement requires citation \cite{Smith2012}. \\~
 \end{center}
 \end{frame}
 
-%----------------------------------------------------------------------------------------
+%------------------------------------------------
 
 \end{document}
