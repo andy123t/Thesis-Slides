@@ -27,17 +27,18 @@
 %\usecolortheme{dolphin}
 %\usecolortheme{seahorse}
 
+%\usetheme{boxes}
 %\setbeamercovered{transparent}
 %\usefonttheme[onlymath]{serif}
 \usefonttheme{serif}
-%\usetheme{boxes}
+%\usefonttheme{professionalfonts}
 
 %\setbeamertemplate{headline}{}
 %\setbeamertemplate{footline}{}
 \setbeamertemplate{blocks}[rounded][shadow=true]
 \setbeamertemplate{navigation symbols}{}
-%\setbeamertemplate{itemize items}[square]  % ball, circle
-\setbeamertemplate{enumerate items}[square]
+\setbeamertemplate{itemize items}[circle]  % ball, circle
+\setbeamertemplate{enumerate items}[default]
 %\setbeamertemplate{section in toc}[square]
 
 \setbeamertemplate{headline}{	% navigation bar of section (second headline)
@@ -99,18 +100,19 @@
 
 
 %---------- 设置字体  ----------
-\setbeamerfont{normal text}{family=\songti}
-\setbeamerfont{frametitle}{family=\kaishu}
-\setbeamerfont{title}{family=\kaishu}
-\setbeamerfont{subtitle}{family=\kaishu}
+\setbeamerfont{normal text}{family=\rmfamily}
+\setbeamerfont{frametitle}{family=\rmfamily}
+\setbeamerfont{title}{family=\rmfamily}
+\setbeamerfont{subtitle}{family=\rmfamily}
 \setbeamerfont{institute}{family=\kaishu}
 \setbeamerfont{author}{family=\kaishu}
-%\setbeamerfont{date}{family=\kaishu}
-\setbeamerfont{headline}{family=\sffamily}
+%\setbeamerfont{date}{family=\rmfamily}
 \setbeamerfont{footline}{family=\kaishu}
-\setbeamerfont{section in toc}{family=\kaishu}
-\setbeamerfont{subsection in toc}{family=\kaishu}
+\setbeamerfont{headline}{family=\sffamily}
+\setbeamerfont{section in toc}{family=\rmfamily}
+\setbeamerfont{subsection in toc}{family=\rmfamily}
 \AtBeginDocument{\usebeamerfont{normal text}}
+
 
 \setbeamertemplate{caption}[numbered]
 \numberwithin{figure}{section}
@@ -156,13 +158,13 @@
 \makeatother
 
 
-\AtBeginSection[]{
-\begin{frame}
-  \frametitle{Outline} %\small
-  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
-  \addtocounter{framenumber}{-1}
-\end{frame}
-}
+%\AtBeginSection[]{
+%\begin{frame}
+%  \frametitle{Outline} %\small
+%  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
+%  \addtocounter{framenumber}{-1}
+%\end{frame}
+%}
 
 
 %---------- 自定义命令 ----------
@@ -323,12 +325,12 @@ Let $X$ be a Hilbert space, let $a(\cdot, \cdot)$ : $X \times X \rightarrow \mat
   \alert{
   \left\{\begin{aligned}
   &\text {Find } u \in X \text { such that } \\
-  &a(u, v)=F(v), \forall v \in X
+  &a(u, v)=F(v),~\forall v \in X.
   \end{aligned} \right. }
 \end{equation}
 has a unique solution. Moreover, we have
 \begin{equation}
-  \alert{ \|u\| \leq \frac{1}{\alpha}\|F\|_{X^{\prime}}  }
+  \alert{ \|u\| \leq \frac{1}{\alpha}\|F\|_{X^{\prime}}.  }
 \end{equation}
 \end{theorem}
 
