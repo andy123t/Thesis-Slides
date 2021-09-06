@@ -41,6 +41,8 @@
 \setbeamertemplate{enumerate items}[default]
 %\setbeamertemplate{section in toc}[square]
 
+\setbeamersize{text margin left=0.75cm, text margin right=0.75cm}
+
 \setbeamertemplate{headline}{	% navigation bar of section (second headline)
 \begin{beamercolorbox}{section in head/foot}
    \vskip0pt\insertnavigation{\paperwidth}\vskip2pt
@@ -161,7 +163,12 @@
 %\AtBeginSection[]{
 %\begin{frame}
 %  \frametitle{Outline} %\small
+%  \vskip -5pt
+%  \hspace*{1.5em}
+%  \parbox[t]{.95\textwidth}{
+%  \begin{minipage}[c][0.6\textheight]{\textwidth}
 %  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
+%  \end{minipage} }
 %  \addtocounter{framenumber}{-1}
 %\end{frame}
 %}
@@ -203,9 +210,20 @@
 \titlepage % Print the title page as the first slide
 \end{frame}}
 
+%\begin{frame}
+%\frametitle{Outline}
+%\tableofcontents
+%\end{frame}
+
 \begin{frame}
 \frametitle{Outline}
-\tableofcontents
+\vskip -5.6pt
+\hspace*{1.5em}
+\parbox[t]{.95\textwidth}{
+  \begin{minipage}[c][0.6\textheight]{\textwidth}
+  \tableofcontents
+  \end{minipage}
+}
 \end{frame}
 
 %--------------------------------------------------------------------------------
