@@ -39,8 +39,8 @@
 %\setbeamertemplate{footline}{}
 \setbeamertemplate{blocks}[rounded][shadow=true]
 \setbeamertemplate{navigation symbols}{}
-%\setbeamertemplate{itemize items}[square]  % ball, circle
-\setbeamertemplate{enumerate items}[square]
+%\setbeamertemplate{itemize items}[square]  % ball, circle, square
+\setbeamertemplate{enumerate items}[default]
 %\setbeamertemplate{section in toc}[square]
 
 }
@@ -129,7 +129,13 @@
 \AtBeginSection[]{
 \begin{frame}
   \frametitle{Outline} %\small
+  \vskip -5pt
+  \hspace*{1.5em}
+  \parbox[t]{.95\textwidth}{
+  \begin{minipage}[c][0.6\textheight]{\textwidth}
   \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
+  \end{minipage}
+  }
   \addtocounter{framenumber}{-1}
 \end{frame}
 }
@@ -172,7 +178,13 @@
 
 \begin{frame}
 \frametitle{Outline}
-\tableofcontents
+\vskip -5.6pt
+\hspace*{1.5em}
+\parbox[t]{.95\textwidth}{
+  \begin{minipage}[c][0.6\textheight]{\textwidth}
+  \tableofcontents
+  \end{minipage}
+}
 \end{frame}
 
 %--------------------------------------------------------------------------------

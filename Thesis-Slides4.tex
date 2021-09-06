@@ -156,13 +156,19 @@
 \makeatother
 
 
-%\AtBeginSection[]{
-%\begin{frame}
-%  \frametitle{Outline} %\small
-%  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
-%  \addtocounter{framenumber}{-1}
-%\end{frame}
-%}
+\AtBeginSection[]{
+\begin{frame}
+  \frametitle{Outline} %\small
+  \vskip -5pt
+  \hspace*{1.5em}
+  \parbox[t]{.95\textwidth}{
+  \begin{minipage}[c][0.6\textheight]{\textwidth}
+  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
+  \end{minipage}
+  }
+  \addtocounter{framenumber}{-1}
+\end{frame}
+}
 
 
 %---------- 自定义命令 ----------
@@ -198,7 +204,13 @@
 
 \begin{frame}
 \frametitle{Outline}
-\tableofcontents
+\vskip -5.6pt
+\hspace*{1.5em}
+\parbox[t]{.95\textwidth}{
+  \begin{minipage}[c][0.6\textheight]{\textwidth}
+  \tableofcontents
+  \end{minipage}
+}
 \end{frame}
 
 %--------------------------------------------------------------------------------
