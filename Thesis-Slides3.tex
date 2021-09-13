@@ -1,7 +1,7 @@
 %======================================================%
 %   Beamer Presentation
 %   LaTeX Template
-%   compile using PDFTeXify or PDFLaTeX
+%   compile using PDFTeXify, PDFLaTeX or XeLaTeX
 %======================================================%
 
 %--------------------------------------------------------------------------------
@@ -32,7 +32,7 @@
 %\setbeamercovered{transparent}
 %\usefonttheme[onlymath]{serif}
 \usefonttheme{serif}
-%\usefonttheme{professionalfonts}
+\usefonttheme{professionalfonts}
 
 %\setbeamertemplate{headline}{}
 %\setbeamertemplate{footline}{}
@@ -54,10 +54,11 @@
 \end{beamercolorbox}
 }
 
+\definecolor{foot}{rgb}{0.5,0.2,0.5}
 \setbeamertemplate{footline}{%
   \hfill%
   %\usebeamercolor[fg]{page number in head/foot}%
-  \usebeamercolor[gray]{page number in head/foot}%
+  \usebeamercolor[foot]{page number in head/foot}%
   \usebeamerfont{page number in head/foot}%
   \insertframenumber \,/\,\inserttotalframenumber
   \kern1em\vskip2pt%
@@ -131,8 +132,8 @@
 %\newtheorem{example}{Example}
 \newtheorem{example}{例}
 %\numberwithin{example}{section}
-\renewenvironment{proof}[1][证明]{\textbf{#1}:~}{\qed\par}
-
+\renewenvironment{proof}[1][证明]{\textbf{#1}:~~}{\qed\par}
+\newenvironment{solution}{\par\noindent\textbf{解}:~~}{\par}
 
 %---------- 调节公式的间距 ----------
 %\AtBeginDocument{
