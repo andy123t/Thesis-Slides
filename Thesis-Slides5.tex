@@ -1,7 +1,7 @@
 %======================================================%
 %   Beamer Presentation
 %   LaTeX Template
-%   compile using PDFTeXify, PDFLaTeX or XeLaTeX
+%   compile using PDFTeXify or PDFLaTeX
 %======================================================%
 
 %--------------------------------------------------------------------------------
@@ -13,13 +13,12 @@
 \mode<presentation>{
 
 %------- Beamer theme ------
-\usetheme{CambridgeUS}
-%\usetheme{Madrid}
+\usetheme{default}
 %\usetheme{Boadilla}
 %\usetheme{Frankfurt}
 %\usetheme{Warsaw}
+%\usetheme{CambridgeUS}
 %\usetheme{Montpellier}
-
 
 %------- Color theme ------
 \usecolortheme{rose}
@@ -29,22 +28,57 @@
 %\usecolortheme{dolphin}
 %\usecolortheme{seahorse}
 
-%\usetheme{boxes}
 %\setbeamercovered{transparent}
 %\usefonttheme[onlymath]{serif}
 \usefonttheme{serif}
 \usefonttheme{professionalfonts}
 
+%\usetheme{boxes}
+
 %\setbeamertemplate{headline}{}
 %\setbeamertemplate{footline}{}
 \setbeamertemplate{blocks}[rounded][shadow=true]
 \setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{itemize items}[circle]  % ball, circle
-\setbeamertemplate{enumerate items}[default]
-%\setbeamertemplate{section in toc}[square]
 
+\setbeamersize{text margin left=0.75cm, text margin right=0.75cm}
+
+% Itemize items: default (triangle), circle, square, ball
+\setbeamertemplate{itemize items}[circle]
+
+% Enumerate items: default, circle, square, ball
+%\setbeamertemplate{enumerate items}[square]
+%\setbeamertemplate{enumerate items}[circle]
+
+\setbeamertemplate{footline}{%
+  \hfill%
+  \usebeamercolor[footed]{page number in head/foot}%
+  \usebeamerfont{page number in head/foot}%
+  \insertframenumber \,/\,\inserttotalframenumber
+  \kern1em\vskip2pt%
+}
 }
 
+\setbeamertemplate{headline}
+{ \leavevmode\begin{beamercolorbox}[wd=\paperwidth,ht=0.5ex,dp=1ex,left]{}
+\end{beamercolorbox} }
+
+\setbeamercolor{lower separation line head}{bg=darkblue}
+
+%---------- frametitle add a line ----------
+\setbeamertemplate{frametitle}{%
+  \leavevmode\linespread{1}\centering\insertframetitle\vskip-1em
+  \begin{beamercolorbox}[colsep=0.5pt,wd=11.3cm]{lower separation line head}
+  \end{beamercolorbox}
+}
+
+
+%\useoutertheme{split}
+\definecolor{darkblue}{rgb}{0.18,0.18,0.64}
+\definecolor{footed}{rgb}{0.5,0.2,0.5}
+\setbeamercolor{frametitle}{fg=blue}
+
+%\setbeamercolor{title}{bg=black!10!white, fg=blue}
+%\setbeamercolor{subtitle}{bg=black!10!white, fg=blue}
 
 %--------- 宏包  ----------
 \usepackage[UTF8,noindent]{ctex}
@@ -70,20 +104,19 @@
 \newcolumntype{R}{>{\raggedright \arraybackslash}X}
 
 
-%---------- 设置字体  ----------
+%---------- 设置中文字体  ---------------
 \setbeamerfont{normal text}{family=\rmfamily}
-\setbeamerfont{frametitle}{family=\rmfamily}
-\setbeamerfont{title}{family=\rmfamily}
-\setbeamerfont{subtitle}{family=\rmfamily}
-\setbeamerfont{institute}{family=\kaishu}
-\setbeamerfont{author}{family=\kaishu}
-%\setbeamerfont{date}{family=\rmfamily}
-\setbeamerfont{footline}{family=\kaishu}
+\setbeamerfont{frametitle}{family=\sffamily}
+\setbeamerfont{title}{family=\sffamily}
+%\setbeamerfont{subtitle}{family=\sffamily}
+\setbeamerfont{institute}{family=\rmfamily}
+\setbeamerfont{author}{family=\rmfamily}
+\setbeamerfont{date}{family=\rmfamily}
 \setbeamerfont{headline}{family=\sffamily}
-\setbeamerfont{section in toc}{family=\rmfamily}
-\setbeamerfont{subsection in toc}{family=\rmfamily}
+%\setbeamerfont{footline}{family=\rmfamily}
+%\setbeamerfont{section in toc}{family=\sffamily}
+%\setbeamerfont{subsection in toc}{family=\sffamily}
 \AtBeginDocument{\usebeamerfont{normal text}}
-
 
 \setbeamertemplate{caption}[numbered]
 \numberwithin{figure}{section}
@@ -91,28 +124,31 @@
 \numberwithin{equation}{section}
 
 %---------- 定理设置  --------------
+\theoremstyle{plain}
 \setbeamertemplate{theorems}[numbered]
+%\theoremstyle{definition}
 %\newtheorem{theorem}{Theorem}
-\newtheorem{theorem}{定理}
+\newtheorem{theorem}{\sffamily 定理}
 \numberwithin{theorem}{section}
 %\newtheorem{definition}{Definition}
-\newtheorem{definition}{定义}
+\newtheorem{definition}{\sffamily 定义}
 \numberwithin{definition}{section}
 %\newtheorem{lemma}{Lemma}
-\newtheorem{lemma}{引理}
+\newtheorem{lemma}{\sffamily 引理}
 \numberwithin{lemma}{section}
 %\newtheorem{proposition}{Proposition}
-\newtheorem{proposition}{命题}
+\newtheorem{proposition}{\sffamily 命题}
 \numberwithin{proposition}{section}
 %\newtheorem{corollary}{Corollary}
-\newtheorem{corollary}{推论}
+\newtheorem{corollary}{\sffamily 引理}
 \numberwithin{corollary}{section}
 \theoremstyle{example}
 %\newtheorem{example}{Example}
-\newtheorem{example}{例}
+\newtheorem{example}{\sffamily 例}
 %\numberwithin{example}{section}
 \renewenvironment{proof}[1][证明]{\textbf{#1}:~~}{\qed\par}
 \newenvironment{solution}{\par\noindent\textbf{解}:~~}{\par}
+
 
 %---------- 调节公式的间距 ----------
 %\AtBeginDocument{
@@ -124,35 +160,8 @@
 %}
 
 
-%---------- 重新定义标题页 ----------
 \makeatletter
-\def\defmajor{}
-\def\defstudy{}
-\def\defadvisor{}
-\newcommand{\major}[1]{\def\defmajor{#1}}
-\newcommand{\study}[1]{\def\defstudy{#1}}
-\newcommand{\advisor}[1]{\def\defadvisor{#1}}
-\makeatother
-
-\defbeamertemplate*{title page}{customized}[1][]{
-\begin{center}
-  {\makebox[160pt][s]{\bf\large\number\year\,届硕士学位论文答辩}}\\[2em]
-  {\color[rgb]{0.50,0.00,0.00}\parbox[t]{10cm}{\Large\bfseries\centering \inserttitle}}\\[2em]
-  \begin{tabular}{p{64pt}@{}c}
-  \makebox[4em][s]{\kaishu 答辩人}~:&{\kaishu \insertauthor}\\[2pt]
-  \makebox[4em][s]{\kaishu 专业}~:&{\kaishu \defmajor}\\[2pt]
-  \makebox[4em][s]{\kaishu 指导教师}~:&{\kaishu \defadvisor}\\[2pt]
-  \makebox[4em][s]{\kaishu 研究方向}~:&{\kaishu \defstudy}\\[2pt]
-\end{tabular}
-\vskip 2em
-\usebeamerfont{date}\insertdate
-%\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic
-\end{center}
-}
-
-
-\makeatletter
-\newcommand\HUGE{\@setfontsize\Huge{28}{32}}
+\newcommand\HUGE{\@setfontsize\Huge{36}{42}}
 \makeatother
 
 
@@ -180,13 +189,18 @@
 %	TITLE PAGE
 %--------------------------------------------------------------------------------
 
-\title[论文题目]{毕业论文题目毕业论文题目毕业论文题目\\ Title 毕业论文题目毕业论文题目}
+\title[论文题目]{毕业论文题目毕业论文题目毕业论文题目}
 
-\author[学生姓名]{学生姓名}
-\advisor{某某某~~教授}
-\major{专业名称}  % 专业名称
-\study{专业方向名称}
 
+\author[学生姓名]
+{
+    答辩人：学生姓名~~ \vskip 3mm
+    % 报告人：学生姓名~~ \vskip 3mm
+    专业：专业名称 \vskip 3mm
+    指导教师：导师姓名 ~ 职称 \vskip 3mm
+    研究方向：专业研究方向
+}
+%\author[姓名]{报告人姓名}
 
 \institute[学校名称]{}
 %\institute[学校名称]{\normalsize 学校名称}
@@ -201,6 +215,11 @@
 \begin{frame}
 \titlepage
 \end{frame}
+
+%\begin{frame}
+%\frametitle{Outline}
+%\tableofcontents
+%\end{frame}
 
 \begin{frame}
 \frametitle{Outline}
@@ -330,12 +349,12 @@ Let $X$ be a Hilbert space, let $a(\cdot, \cdot)$ : $X \times X \rightarrow \mat
   \alert{
   \left\{\begin{aligned}
   &\text {Find } u \in X \text { such that } \\
-  &a(u, v)=F(v),~\forall v \in X.
+  &a(u, v)=F(v), \forall v \in X
   \end{aligned} \right. }
 \end{equation}
 has a unique solution. Moreover, we have
 \begin{equation}
-  \alert{ \|u\| \leq \frac{1}{\alpha}\|F\|_{X^{\prime}}. }
+  \alert{ \|u\| \leq \frac{1}{\alpha}\|F\|_{X^{\prime}}  }
 \end{equation}
 \end{theorem}
 
@@ -490,16 +509,16 @@ This statement requires citation \cite{Smith2012}. \\~
 
 
 %------------------------------------------------
-
-\setbeamertemplate{headline}{}
+%\setbeamertemplate{background canvas}[vertical shading][bottom=white,top=structure.fg!25]
+%\setbeamertemplate{headline}{}
 \begin{frame}
-%\sffamily
+\sffamily
 \begin{center}
-\HUGE \textcolor[RGB]{165,3,3}{谢\quad 谢! \\[8pt] 
-Thank you!}
+\HUGE{\textcolor[RGB]{165,3,3}{Thank~you!}}
 \end{center}
 \end{frame}
 
+%------------------------------------------------
 
 \end{document}
 
