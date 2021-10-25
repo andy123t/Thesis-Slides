@@ -66,7 +66,7 @@
 
 %---------- frametitle add a line ----------
 \setbeamertemplate{frametitle}{%
-  \leavevmode\linespread{1}\centering\insertframetitle\vskip-1em
+  \leavevmode\linespread{1}\centering\insertframetitle\vskip-12pt
   \begin{beamercolorbox}[colsep=0.5pt,wd=11.3cm]{lower separation line head}
   \end{beamercolorbox}
 }
@@ -95,7 +95,7 @@
 \usepackage{tikz}
 
 %---------- 定义行距 ----------
-\renewcommand{\baselinestretch}{1.15}
+%\renewcommand{\baselinestretch}{1.15}
 
 %---------- 定义表格新命令 ----------
 \newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
@@ -210,6 +210,9 @@
 \graphicspath{{./figures/}}
 
 \begin{document}
+
+% only change the spacing of body text
+\setlength{\baselineskip}{15pt}
 
 
 \begin{frame}

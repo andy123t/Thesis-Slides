@@ -93,7 +93,7 @@
 \usepackage{tikz}
 
 %---------- 定义行距 ----------
-\renewcommand{\baselinestretch}{1.15}
+%\renewcommand{\baselinestretch}{1.15}
 
 %---------- 定义表格新命令 ----------
 \newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
@@ -204,6 +204,9 @@
 \graphicspath{{./figures/}}
 
 \begin{document}
+
+% only change the spacing of body text
+\setlength{\baselineskip}{15pt}
 
 
 {\setbeamertemplate{headline}{}
@@ -512,7 +515,7 @@ This statement requires citation \cite{Smith2012}. \\~
 \begin{frame}
 %\sffamily
 \begin{center}
-\HUGE \textcolor[RGB]{165,3,3}{谢\quad 谢! \\[8pt] 
+\HUGE \textcolor[RGB]{165,3,3}{谢\quad 谢! \\[8pt]
 Thank you!}
 \end{center}
 \end{frame}
