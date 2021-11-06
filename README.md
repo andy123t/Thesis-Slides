@@ -1,4 +1,5 @@
 # Thesis-Slides
+
 毕业论文开题报告与答辩幻灯片模板
 
 如果认为字体太大, 可以讲 `11pt` 改为 `10pt`。
@@ -19,7 +20,6 @@
 \usefonttheme[onlymath]{serif}
 ```
 
-
 Beamer 主题和颜色主题可以根据需要修改。
 
 ```latex
@@ -27,4 +27,10 @@ Beamer 主题和颜色主题可以根据需要修改。
 \usecolortheme{rose}  % Color theme
 ```
 
-**注意：** 编译请使用 PDFTeXify 或 PDFLaTeX 编译运行，否则部分数学符号显示可能有问题。
+**注意：** 编译最好使用 PDFTeXify 或 PDFLaTeX 编译运行，使用 XeLaTeX 则需要添加
+
+```latex
+\usefonttheme{professionalfonts}
+```
+
+否则部分数学符号显示可能有问题。
