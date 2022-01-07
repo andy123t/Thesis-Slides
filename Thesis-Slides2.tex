@@ -41,6 +41,11 @@
 \setbeamertemplate{enumerate items}[default]
 %\setbeamertemplate{section in toc}[square]
 
+\setbeamertemplate{section in toc}[sections numbered]
+%\setbeamertemplate{subsection in toc}[subsections numbered]
+%\setbeamertemplate{section in toc}[ball unnumbered]
+%\setbeamertemplate{subsection in toc}[ball unnumbered]
+
 \setbeamersize{text margin left=0.75cm, text margin right=0.75cm}
 
 \setbeamertemplate{headline}{	% navigation bar of section (second headline)
@@ -51,11 +56,11 @@
 \end{beamercolorbox}
 }
 
-\definecolor{foot}{rgb}{0.5,0.2,0.5}
+\definecolor{footer}{rgb}{0.5,0.2,0.5}
 \setbeamertemplate{footline}{%
   \hfill%
   %\usebeamercolor[fg]{page number in head/foot}%
-  \usebeamercolor[foot]{page number in head/foot}%
+  \usebeamercolor[footer]{page number in head/foot}%
   \usebeamerfont{page number in head/foot}%
   \insertframenumber \,/\,\inserttotalframenumber
   \kern1em\vskip2pt%
@@ -161,20 +166,6 @@
 \makeatother
 
 
-%\AtBeginSection[]{
-%\begin{frame}
-%  \frametitle{Outline} %\small
-%  \vskip -5pt
-%  \hspace*{1.5em}
-%  \parbox[t]{.95\textwidth}{
-%  \begin{minipage}[c][0.6\textheight]{\textwidth}
-%  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
-%  \end{minipage} }
-%  \addtocounter{framenumber}{-1}
-%\end{frame}
-%}
-
-
 %---------- 自定义命令 ----------
 \newcommand{\red}[1]{\textcolor{red}{#1}}
 \newcommand{\blue}[1]{\textcolor{blue}{#1}}
@@ -220,15 +211,17 @@
 %\end{frame}
 
 \begin{frame}
-\frametitle{Outline}
-\vskip -5.6pt
-\hspace*{1.5em}
-\parbox[t]{.95\textwidth}{
-  \begin{minipage}[c][0.6\textheight]{\textwidth}
+\frametitle{目录}
+  \vskip 10pt
+  \hspace*{0.5em}
+  \parbox[t]{.95\textwidth}{
+  \begin{minipage}[c]{\textwidth}
+  \setlength{\baselineskip}{2.8em}
   \tableofcontents
   \end{minipage}
-}
+  }
 \end{frame}
+
 
 %--------------------------------------------------------------------------------
 %	PRESENTATION SLIDES

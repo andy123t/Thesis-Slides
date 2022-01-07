@@ -43,6 +43,23 @@
 \setbeamertemplate{enumerate items}[default]
 %\setbeamertemplate{section in toc}[square]
 
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.3\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor~(\insertshortinstitute)
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle \hfill
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.3\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\hfill\insertshortdate{}\hfill %\kern1ex
+    \makebox[3em][r]{\insertframenumber\,/\,\inserttotalframenumber}\kern2ex
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
 }
 
 %--------- 宏包  ----------
@@ -128,11 +145,12 @@
 
 \AtBeginSection[]{
 \begin{frame}
-  \frametitle{Outline} %\small
-  \vskip -5pt
-  \hspace*{1.5em}
+  \frametitle{Outline}
+  \vskip 10.6pt
+  \hspace*{0.5em}
   \parbox[t]{.95\textwidth}{
-  \begin{minipage}[c][0.6\textheight]{\textwidth}
+  \begin{minipage}[c]{\textwidth}
+  \setlength{\baselineskip}{2.8em}
   \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
   \end{minipage}
   }
@@ -160,10 +178,8 @@
     指导教师：导师姓名 ~ 职称 \vskip 3mm
     研究方向：专业研究方向
 }
-%\author[姓名]{报告人姓名}
 
 \institute[学校名称]{}
-%\institute[学校名称]{\normalsize 学校名称}
 
 \date[2021.x.x]{2021.x.x}
 
@@ -178,16 +194,19 @@
 \titlepage
 \end{frame}
 
+
 \begin{frame}
 \frametitle{Outline}
-\vskip -5.6pt
-\hspace*{1.5em}
-\parbox[t]{.95\textwidth}{
-  \begin{minipage}[c][0.6\textheight]{\textwidth}
+  \vskip 10pt
+  \hspace*{0.5em}
+  \parbox[t]{.95\textwidth}{
+  \begin{minipage}[c]{\textwidth}
+  \setlength{\baselineskip}{2.8em}
   \tableofcontents
   \end{minipage}
-}
+  }
 \end{frame}
+
 
 %--------------------------------------------------------------------------------
 %	PRESENTATION SLIDES

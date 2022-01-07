@@ -54,11 +54,11 @@
 \end{beamercolorbox}
 }
 
-\definecolor{foot}{rgb}{0.5,0.2,0.5}
+\definecolor{footer}{rgb}{0.5,0.2,0.5}
 \setbeamertemplate{footline}{%
   \hfill%
   %\usebeamercolor[fg]{page number in head/foot}%
-  \usebeamercolor[foot]{page number in head/foot}%
+  \usebeamercolor[footer]{page number in head/foot}%
   \usebeamerfont{page number in head/foot}%
   \insertframenumber \,/\,\inserttotalframenumber
   \kern1em\vskip2pt%
@@ -152,13 +152,15 @@
 
 %\AtBeginSection[]{
 %\begin{frame}
-%  \frametitle{Outline} %\small
-%  \vskip -5pt
-%  \hspace*{1.5em}
+%  \frametitle{Outline}
+%  \vskip 10pt
+%  \hspace*{0.5em}
 %  \parbox[t]{.95\textwidth}{
-%  \begin{minipage}[c][0.6\textheight]{\textwidth}
+%  \begin{minipage}[c]{\textwidth}
+%  \setlength{\baselineskip}{2.8em}
 %  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
-%  \end{minipage} }
+%  \end{minipage}
+%  }
 %  \addtocounter{framenumber}{-1}
 %\end{frame}
 %}
@@ -210,13 +212,14 @@
 
 \begin{frame}
 \frametitle{Outline}
-\vskip -5.6pt
-\hspace*{1.5em}
-\parbox[t]{.95\textwidth}{
-  \begin{minipage}[c][0.6\textheight]{\textwidth}
+  \vskip 10pt
+  \hspace*{0.5em}
+  \parbox[t]{.95\textwidth}{
+  \begin{minipage}[c]{\textwidth}
+  \setlength{\baselineskip}{2.8em}
   \tableofcontents
   \end{minipage}
-}
+  }
 \end{frame}
 
 %--------------------------------------------------------------------------------
