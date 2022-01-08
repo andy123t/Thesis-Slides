@@ -43,6 +43,23 @@
 \setbeamertemplate{enumerate items}[default]
 %\setbeamertemplate{section in toc}[square]
 
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor~(\insertshortinstitute)
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle \hfill
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\hfill\insertshortdate{}\hfill %\kern1ex
+    \makebox[3em][r]{\insertframenumber\,/\,\inserttotalframenumber}\kern2ex
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
 }
 
 
@@ -92,6 +109,7 @@
 
 %---------- 定理设置  --------------
 \setbeamertemplate{theorems}[numbered]
+\addtobeamertemplate{theorem begin}{\normalfont}{}
 %\newtheorem{theorem}{Theorem}
 \newtheorem{theorem}{定理}
 \numberwithin{theorem}{section}
@@ -124,33 +142,6 @@
 %}
 
 
-%---------- 重新定义标题页 ----------
-\makeatletter
-\def\defmajor{}
-\def\defstudy{}
-\def\defadvisor{}
-\newcommand{\major}[1]{\def\defmajor{#1}}
-\newcommand{\study}[1]{\def\defstudy{#1}}
-\newcommand{\advisor}[1]{\def\defadvisor{#1}}
-\makeatother
-
-\defbeamertemplate*{title page}{customized}[1][]{
-\begin{center}
-  {\makebox[160pt][s]{\bfseries\large\number\year\,届硕士学位论文答辩}}\\[2em]
-  {\color[rgb]{0.50,0.00,0.00}\parbox[t]{10cm}{\Large\bfseries\centering \inserttitle}}\\[2em]
-  \begin{tabular}{p{64pt}@{}c}
-  \makebox[4em][s]{\kaishu 答辩人}~:&{\kaishu \insertauthor}\\[2pt]
-  \makebox[4em][s]{\kaishu 专业}~:&{\kaishu \defmajor}\\[2pt]
-  \makebox[4em][s]{\kaishu 指导教师}~:&{\kaishu \defadvisor}\\[2pt]
-  \makebox[4em][s]{\kaishu 研究方向}~:&{\kaishu \defstudy}\\[2pt]
-\end{tabular}
-\vskip 2em
-\usebeamerfont{date}\insertdate
-%\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic
-\end{center}
-}
-
-
 \makeatletter
 \newcommand\HUGE{\@setfontsize\Huge{28}{32}}
 \makeatother
@@ -159,7 +150,7 @@
 \AtBeginSection[]{
 \begin{frame}
   \frametitle{目录}
-  \vskip 10.6pt
+  \vskip 10.8pt
   \hspace*{1.5em}
   \parbox[t]{.95\textwidth}{
   \begin{minipage}[c]{\textwidth}
@@ -180,20 +171,23 @@
 %	TITLE PAGE
 %--------------------------------------------------------------------------------
 
-\title[论文题目]{毕业论文题目毕业论文题目毕业论文题目\\ Title 毕业论文题目毕业论文题目}
+\title[论文题目]{毕业论文题目毕业论文题目毕业论文题目}
 
-\author[学生姓名]{学生姓名}
-\advisor{某某某~~教授}
-\major{专业名称}  % 专业名称
-\study{专业方向名称}
-
+\author[学生姓名]
+{
+    答辩人：学生姓名~~ \vskip 3mm
+    % 报告人：学生姓名~~ \vskip 3mm
+    专业：专业名称 \vskip 3mm
+    指导教师：导师姓名 ~ 职称 \vskip 3mm
+    研究方向：专业研究方向
+}
 
 \institute[学校名称]{}
-%\institute[学校名称]{\normalsize 学校名称}
 
 \date[2021.x.x]{2021.x.x}
 
 \graphicspath{{./figures/}}
+
 
 \begin{document}
 
