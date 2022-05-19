@@ -51,10 +51,10 @@
 
 \setbeamertemplate{footline}{%
   \hfill%
-  \usebeamercolor[footed]{page number in head/foot}%
+  \usebeamercolor[footer]{page number in head/foot}%
   \usebeamerfont{page number in head/foot}%
   \insertframenumber \,/\,\inserttotalframenumber
-  \kern1em\vskip2pt%
+  \kern1em\vskip4pt%
 }
 }
 
@@ -62,7 +62,7 @@
 { \leavevmode\begin{beamercolorbox}[wd=\paperwidth,ht=0.5ex,dp=1ex,left]{}
 \end{beamercolorbox} }
 
-\setbeamercolor{lower separation line head}{bg=darkblue}
+\setbeamercolor{lower separation line head}{bg=linecolor} %structure.fg!30!bg
 
 %---------- frametitle add a line ----------
 \setbeamertemplate{frametitle}{%
@@ -73,9 +73,12 @@
 
 
 %\useoutertheme{split}
-\definecolor{darkblue}{rgb}{0.18,0.18,0.64}
-\definecolor{footed}{rgb}{0.5,0.2,0.5}
-\setbeamercolor{frametitle}{fg=blue}
+%\definecolor{darkblue}{rgb}{0.18,0.18,0.64}
+\definecolor{darkblue}{rgb}{0.2,0.4,0.8}
+\setbeamercolor{structure}{fg=darkblue}
+\definecolor{footer}{rgb}{0.5,0.2,0.5}
+\definecolor{linecolor}{rgb}{0.35,0.70,0.725}
+%\setbeamercolor{frametitle}{fg=blue}
 
 %\setbeamercolor{title}{bg=black!10!white, fg=blue}
 %\setbeamercolor{subtitle}{bg=black!10!white, fg=blue}
@@ -113,9 +116,9 @@
 \setbeamerfont{author}{family=\rmfamily}
 \setbeamerfont{date}{family=\rmfamily}
 \setbeamerfont{headline}{family=\sffamily}
-%\setbeamerfont{footline}{family=\rmfamily}
-%\setbeamerfont{section in toc}{family=\sffamily}
-%\setbeamerfont{subsection in toc}{family=\sffamily}
+\setbeamerfont{footline}{family=\sffamily}
+\setbeamerfont{section in toc}{family=\sffamily}
+\setbeamerfont{subsection in toc}{family=\sffamily}
 \AtBeginDocument{\usebeamerfont{normal text}}
 
 \setbeamertemplate{caption}[numbered]
@@ -168,21 +171,27 @@
 \makeatother
 
 
+%\AtBeginSection[]{
+%\begin{frame}
+%  \frametitle{目录}
+%  \vskip 10.6pt
+%  \hspace*{1.5em}
+%  \parbox[t]{.95\textwidth}{
+%  \begin{minipage}[c]{\textwidth}
+%  \setlength{\baselineskip}{2.8em}
+%  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
+%  \end{minipage}
+%  }
+%  \addtocounter{framenumber}{-1}
+%\end{frame}
+%}
 \AtBeginSection[]{
-\begin{frame}
-  \frametitle{目录}
-  \vskip 10.6pt
-  \hspace*{1.5em}
-  \parbox[t]{.95\textwidth}{
-  \begin{minipage}[c]{\textwidth}
-  \setlength{\baselineskip}{2.8em}
-  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
-  \end{minipage}
-  }
+\begin{frame}[plain]{}
+  \LARGE\centering
+  \tableofcontents[currentsection,sectionstyle=show/hide]
   \addtocounter{framenumber}{-1}
 \end{frame}
 }
-
 
 %---------- 自定义命令 ----------
 \newcommand{\red}[1]{\textcolor{red}{#1}}
