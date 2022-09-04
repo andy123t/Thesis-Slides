@@ -180,6 +180,7 @@
 
 %---------- 定理设置  --------------
 \setbeamertemplate{theorems}[numbered]
+\addtobeamertemplate{theorem begin}{\normalfont}{}
 %\newtheorem{theorem}{Theorem}
 \newtheorem{theorem}{定理}
 \numberwithin{theorem}{section}
@@ -353,20 +354,20 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
 
 \begin{frame}
 \frametitle{定理环境}
-\begin{definition} \upshape
+\begin{definition}
 This is a definition environment. 这是一个定义环境.
 \end{definition}
 
 
-\begin{lemma} \upshape
+\begin{lemma}
 This is a lemma environment. 这是一个引理环境.
 \end{lemma}
 
-\begin{proposition} \upshape
+\begin{proposition}
 This is a proposition environment. 这是一个命题环境.
 \end{proposition}
 
-\begin{theorem}[Mass--energy] \upshape
+\begin{theorem}[Mass--energy]
 This is a theorem environment. 这是一个定理环境.
 \end{theorem}
 
@@ -381,7 +382,7 @@ This is a theorem environment. 这是一个定理环境.
 \begin{frame}
 \frametitle{定理示例}
 
-\begin{theorem}[Lax-Milgram Lemma] \upshape
+\begin{theorem}[Lax-Milgram Lemma]
 Let $X$ be a Hilbert space, let $a(\cdot, \cdot)$ : $X \times X \rightarrow \mathbb{R}$ be a continuous and coercive bilinear form, and let $F : X \rightarrow \mathbb{R}$ be a linear functional in $X^{\prime}$. Then the variational problem:
 \begin{equation}
   \alert{
@@ -392,7 +393,7 @@ Let $X$ be a Hilbert space, let $a(\cdot, \cdot)$ : $X \times X \rightarrow \mat
 \end{equation}
 has a unique solution. Moreover, we have
 \begin{equation}
-  \alert{ \|u\| \leq \frac{1}{\alpha}\|F\|_{X^{\prime}}.  }
+  \alert{ \|u\| \leq \frac{1}{\alpha}\|F\|_{X^{\prime}}. }
 \end{equation}
 \end{theorem}
 
