@@ -66,6 +66,14 @@
 }
 \makeatother
 
+% change the style of frametitle
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.7ex,dp=0.9ex,leftskip=1.2ex,rightskip=0cm]{frametitle}%
+    \usebeamerfont{frametitle}\usebeamercolor[fg]{frametitle}\insertframetitle
+  \end{beamercolorbox}
+}
+
 %--------- 宏包  ----------
 \usepackage[UTF8,noindent]{ctex}
 %\usepackage[english]{babel}
@@ -186,7 +194,7 @@
 
 \institute[学校名称]{}
 
-\date[2021.x.x]{2021.x.x}
+\date[202X.X.X]{202X.X.X}
 
 \graphicspath{{./figures/}}
 

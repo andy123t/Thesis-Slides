@@ -8,20 +8,18 @@
 %   PACKAGES AND THEMES
 %--------------------------------------------------------------------------------
 
-\documentclass[notheorems,11pt,compress]{beamer}
+\documentclass[noamsthm,notheorems,11pt,compress]{beamer}
 
-\mode<presentation>{
 
 %------- Beamer theme ------
-\usetheme{Frankfurt}
+%\usetheme{Frankfurt}
 %\usetheme{Montpellier}
 %\usetheme{Warsaw}
 %\usetheme{CambridgeUS}
 %\usetheme{Boadilla}
 
-
 %------- Color theme ------
-\usecolortheme{rose}
+%\usecolortheme{rose}
 %\usecolortheme{orchid}
 %\usecolortheme{lily}
 %\usecolortheme{whale}
@@ -42,29 +40,94 @@
 \setbeamertemplate{enumerate items}[default]
 %\setbeamertemplate{section in toc}[square]
 
-\setbeamersize{text margin left=0.75cm, text margin right=0.75cm}
+\setbeamertemplate{section in toc}
+{\leavevmode\leftskip=2.5em%
+  \llap{%
+    \usebeamerfont*{section number projected}%
+    \usebeamercolor{section number projected}%
+    \begin{pgfpicture}{-1ex}{0ex}{1ex}{2ex}
+      \color{darkorange}
+      \pgfpathcircle{\pgfpoint{0pt}{.75ex}}{1.3ex}
+      \pgfusepath{fill}
+      \pgftext[base]{\color{fg}\inserttocsectionnumber}
+    \end{pgfpicture}\kern1.25ex%
+  }%
+  \inserttocsection\par
+}
+
+\setbeamersize{text margin left=0.5cm, text margin right=0.5cm}
+
+\definecolor{deepblue}{rgb}{0,0.3,0.58}
+\definecolor{darkblue}{rgb}{0.02,0.24,0.44}
+\definecolor{bgblue1}{rgb}{0,0.23,0.44}
+\definecolor{bgblue2}{rgb}{0,0.15,0.29}
+\definecolor{darkorange}{rgb}{0.80,0.4,0.1}
+\definecolor{darkred}{rgb}{0.90,0.1,0.1}
+\definecolor{lightgray}{rgb}{0.78,0.78,0.78}
+\definecolor{darkgray}{rgb}{0.30,0.30,0.30}
+\definecolor{darkgreen}{rgb}{0.02,0.18,0.20}
+\definecolor{footer}{rgb}{0.5,0.2,0.5}
+
+\setbeamercolor{title}{fg=deepblue,bg=gray!12}
+\setbeamercolor{subtitle}{fg=deepblue!80,bg=gray!12}
+%\setbeamercolor{institute}{fg=white}
+%\setbeamercolor{author}{fg=white}
+%\setbeamercolor{date}{fg=white}
+\setbeamercolor{frametitle}{fg=deepblue,bg=gray!12}
+%\setbeamercolor{section in head/foot}{bg=bgblue2,fg=white}
+\setbeamercolor{section in head/foot}{bg=bgblue2!50!bgblue1,fg=white}
+\setbeamertemplate{section in head/foot shaded}{\color{gray}
+\usebeamertemplate{section in head/foot}}
+
+\setbeamercolor{title in head/foot}{bg=bgblue2,fg=black!5}
+\setbeamercolor{author in head/foot}{bg=bgblue1,fg=black!5}
+\setbeamercolor{date in head/foot}{bg=bgblue1,fg=black!5}
+\setbeamercolor{section in toc}{fg=darkorange}
+
+\setbeamercolor{structure}{fg=deepblue}
+\setbeamercolor{alerted text}{fg=darkred}
+
+%\setbeamertemplate{section in toc}[sections numbered]
+%\setbeamertemplate{subsection in toc}[subsections numbered]
+%\setbeamertemplate{section in toc}[ball unnumbered]
+%\setbeamertemplate{subsection in toc}[ball unnumbered]
 
 % change the style of headline
 \setbeamertemplate{headline}{
-\begin{beamercolorbox}[ht=4.5ex]{section in head/foot}
+\begin{beamercolorbox}[ht=4.5ex]{section in head/foot} %,dp=0.0ex
    \vskip2pt\insertsectionnavigationhorizontal{\textwidth}{}{}\vskip2pt
    %\vskip2pt\insertnavigation{\paperwidth}\vskip2pt
 \end{beamercolorbox}
-\begin{beamercolorbox}[colsep=1.5pt,ht=.3ex]{upper separation line head}
-\end{beamercolorbox}
 }
 
-\definecolor{footer}{rgb}{0.5,0.2,0.5}
-\setbeamertemplate{footline}{%
-  \hfill%
-  %\usebeamercolor[fg]{page number in head/foot}%
-  \usebeamercolor[footer]{page number in head/foot}%
-  \usebeamerfont{page number in head/foot}%
-  \insertframenumber \,/\,\inserttotalframenumber
-  \kern1em\vskip3pt%
+\setbeamertemplate{frametitle}{%
+    \nointerlineskip%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=2.75ex,dp=1ex]{frametitle}
+        \hspace*{1.5ex}\insertframetitle%
+    \end{beamercolorbox}%
+    %\vspace*{-1ex}
 }
 
+% change the style of footline
+\makeatletter
+\setbeamertemplate{footline}
+{%
+  \leavevmode%
+  \begin{beamercolorbox}[wd=0.3\paperwidth,ht=2.5ex,dp=1.125ex,center]{author in head/foot}%
+    \usebeamerfont{title in head/foot} ~~\insertshortauthor\ifx\insertinstitute\empty\else\expandafter
+    \ifblank\expandafter{\beamer@shortinstitute}{}{~~(\insertshortinstitute)}\fi
+    \hfill
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=0.4\paperwidth,ht=2.5ex,dp=1.125ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\centering \insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=0.3\paperwidth,ht=2.5ex,dp=1.125ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\hfill\insertshortdate{}\hfill %\kern1ex
+    \makebox[3em][r]{\insertframenumber\,/\,\inserttotalframenumber}\kern2ex
+  \end{beamercolorbox}%
+  \vskip0pt%
 }
+\makeatother
 
 
 %--------- 宏包  ----------
@@ -78,8 +141,10 @@
 \usepackage{tabularx,array,makecell}
 \usepackage{color,xcolor}
 \usepackage{cases}
+\usepackage{tcolorbox}
 \usepackage{mathtools}
 \usepackage{tikz}
+
 
 %---------- 定义行距 ----------
 %\renewcommand{\baselinestretch}{1.15}
@@ -90,17 +155,16 @@
 \newcolumntype{C}{>{\centering \arraybackslash}X}
 \newcolumntype{R}{>{\raggedleft \arraybackslash}X}
 
-
 %---------- 设置字体  ----------
 \setbeamerfont{normal text}{family=\rmfamily}
-\setbeamerfont{frametitle}{family=\rmfamily}
-\setbeamerfont{title}{family=\rmfamily}
-\setbeamerfont{subtitle}{family=\rmfamily}
-\setbeamerfont{institute}{family=\kaishu}
-\setbeamerfont{author}{family=\kaishu}
-%\setbeamerfont{date}{family=\rmfamily}
-\setbeamerfont{footline}{family=\kaishu}
-\setbeamerfont{headline}{family=\sffamily}
+\setbeamerfont{frametitle}{family=\rmfamily,series=\bfseries}
+\setbeamerfont{title}{family=\sffamily}
+\setbeamerfont{subtitle}{family=\sffamily}
+\setbeamerfont{institute}{family=\rmfamily}
+\setbeamerfont{author}{family=\rmfamily}
+\setbeamerfont{date}{family=\rmfamily}
+\setbeamerfont{headline}{family=\sffamily\heiti} %,series=\bfseries
+\setbeamerfont{footline}{family=\rmfamily} %\kaishu
 \setbeamerfont{section in toc}{family=\rmfamily}
 \setbeamerfont{subsection in toc}{family=\rmfamily}
 \AtBeginDocument{\usebeamerfont{normal text}}
@@ -111,30 +175,78 @@
 \numberwithin{table}{section}
 \numberwithin{equation}{section}
 
+\definecolor{bgcolor1}{rgb}{0.95,0.95,1}
+\definecolor{lncolor1}{rgb}{0.63,0.58,0}
+
+\definecolor{bgcolor2}{rgb}{0.95,0.95,0.95}
+\definecolor{lncolor2}{rgb}{0.95,0.4,0.1}
+
+\definecolor{bgcolor3}{rgb}{0.9,1,0.9}
+\definecolor{lncolor3}{rgb}{0,0,0}
+
 %---------- 定理设置  --------------
-\setbeamertemplate{theorems}[numbered]
-\addtobeamertemplate{theorem begin}{\normalfont}{}
-%\newtheorem{theorem}{Theorem}
-\newtheorem{theorem}{定理}
-\numberwithin{theorem}{section}
-%\newtheorem{definition}{Definition}
-\newtheorem{definition}{定义}
-\numberwithin{definition}{section}
-%\newtheorem{lemma}{Lemma}
-\newtheorem{lemma}{引理}
-\numberwithin{lemma}{section}
-%\newtheorem{proposition}{Proposition}
-\newtheorem{proposition}{命题}
-\numberwithin{proposition}{section}
-%\newtheorem{corollary}{Corollary}
-\newtheorem{corollary}{推论}
-\numberwithin{corollary}{section}
-\theoremstyle{example}
-%\newtheorem{example}{Example}
-\newtheorem{example}{例}
-%\numberwithin{example}{section}
-\renewenvironment{proof}[1][证明]{\textbf{#1}:~~}{\qed\par}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage[amsmath,thref,thmmarks,hyperref]{ntheorem}
+\theorempreskipamount1.2em  % spacing before the environment
+\theorempostskipamount0em % spacing after the environment
+\theorempostwork{\noindent}
+\theoremstyle{numberplain} %numberplain{nonumberbreak}
+\theoremheaderfont{\bfseries\color{structure.fg}\upshape} % blue
+\theorembodyfont{\upshape} %\kaishu\color{black}
+\theoremindent0em
+\theoremseparator{\hspace{0.2em}}
+\theoremnumbering{arabic}
+\colorlet{thmcolor}{darkgreen}
+\newmdtheoremenv[linecolor=lncolor1,middlelinewidth=0.5pt,
+    roundcorner=1pt,backgroundcolor=bgcolor1,%
+    innertopmargin=0.5em,innerbottommargin=0.5em,%
+    innerleftmargin=3pt,innerrightmargin=3pt,%
+    skipbelow=0.5em,skipabove=1em,%
+    splittopskip=\topskip,ntheorem]{theorem}%
+    {定理}[section]
+\newmdtheoremenv[linecolor=lncolor1,middlelinewidth=0.5pt,
+    roundcorner=1pt,backgroundcolor=bgcolor1,%
+    innertopmargin=0.5em,innerbottommargin=0.5em,%
+    innerleftmargin=3pt,innerrightmargin=3pt,%
+    skipbelow=0.5em,skipabove=1em,%
+    splittopskip=\topskip,ntheorem]{corollary}%
+    {推论}[section]
+\newmdtheoremenv[linecolor=lncolor1,middlelinewidth=0.5pt,
+    roundcorner=1pt,backgroundcolor=bgcolor1,%
+    innertopmargin=0.5em,innerbottommargin=0.5em,%
+    innerleftmargin=3pt,innerrightmargin=3pt,%
+    skipbelow=0.5em,skipabove=1em,%
+    splittopskip=\topskip,ntheorem]{lemma}%
+    {引理}[section]
+\newmdtheoremenv[linecolor=lncolor2,middlelinewidth=0.5pt,
+    roundcorner=1pt,backgroundcolor=bgcolor2,%
+    innertopmargin=0.5em,innerbottommargin=0.5em,%
+    innerleftmargin=3pt,innerrightmargin=3pt,%
+    skipbelow=0.5em,skipabove=1em,%
+    splittopskip=\topskip,ntheorem]{proposition}%
+    {命题}[section]
+\newmdtheoremenv[linecolor=lncolor3,middlelinewidth=0.5pt,
+    roundcorner=1pt,backgroundcolor=bgcolor3,%
+    innertopmargin=0.5em,innerbottommargin=0.5em,%
+    innerleftmargin=3pt,innerrightmargin=3pt,%
+    skipbelow=0.5em,skipabove=1em,%
+    splittopskip=\topskip,ntheorem]{definition}%
+    {定义}[section]
+
+%----- numbered environment -----
+\newcounter{example}[section]
+\newenvironment{example}[1][]{\refstepcounter{example}\par\medskip
+   \noindent {\color{structure.fg}{\textbf{例~\thesection.\theexample}}} #1 \rmfamily}{\medskip}
+
+\newenvironment{proof}[1][证明]{{\color{structure.fg}\textbf{#1}:}~~}{\hfill\ensuremath{\square}\par}
 \newenvironment{solution}{\par\noindent\textbf{解}:~~}{\par}
+
+%---------- 证明符号 ----------
+\newcommand{\QED}{\hfill\ensuremath{\square}}
+
+%\renewenvironment{proof}[1][证明]{\textbf{#1}:~~}{\qed\par}
+%\newenvironment{solution}{\par\noindent\textbf{解}:~~}{\par}
+
 
 %---------- 调节公式的间距 ----------
 %\AtBeginDocument{
@@ -153,15 +265,8 @@
 
 %\AtBeginSection[]{
 %\begin{frame}
-%  \frametitle{目录} %Outline
-%  \vskip 10pt
-%  \hspace*{0.5em}
-%  \parbox[t]{.95\textwidth}{
-%  \begin{minipage}[c]{\textwidth}
-%  \setlength{\baselineskip}{2.8em}
+%  \frametitle{目录}
 %  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
-%  \end{minipage}
-%  }
 %  \addtocounter{framenumber}{-1}
 %\end{frame}
 %}
@@ -191,7 +296,7 @@
 \institute[学校名称]{}
 %\institute[学校名称]{\normalsize 学校名称}
 
-\date[2021.x.x]{2021.x.x}
+\date[202X.X.X]{202X.X.X}
 
 \graphicspath{{./figures/}}
 
@@ -201,37 +306,27 @@
 \setlength{\baselineskip}{15pt}
 
 
-{\setbeamertemplate{headline}{}
+{%\setbeamertemplate{headline}{}
 \begin{frame}
 \titlepage % Print the title page as the first slide
 \end{frame}}
 
-%\begin{frame}
-%\frametitle{Outline}
-%\tableofcontents
-%\end{frame}
 
 \begin{frame}
 \frametitle{目录}
-  \vskip 10pt
-  \hspace*{0.5em}
-  \parbox[t]{.95\textwidth}{
-  \begin{minipage}[c]{\textwidth}
-  \setlength{\baselineskip}{2.8em}
-  \tableofcontents
-  \end{minipage}
-  }
+\tableofcontents
 \end{frame}
+
 
 %--------------------------------------------------------------------------------
 %	PRESENTATION SLIDES
 %--------------------------------------------------------------------------------
 
 %------------------------------------------------
-\section{文本与 Block}
+\section{研究背景}
 %------------------------------------------------
 
-\begin{frame}{文本测试}
+\begin{frame}{研究背景}
 这是一段测试文字。这是一段测试文字。这是一段测试文字。这是一段测试文字。这是一段测试文字。这是一段测试文字。
 这是一段测试文字。这是一段测试文字。这是一段测试文字。这是一段测试文字。这是一段测试文字。这是一段测试文字。
 
@@ -259,7 +354,7 @@ This is the alertblock environment. The quick brown fox jumps over the lazy dog.
 \end{frame}
 
 %------------------------------------------------
-\section{列表环境与分栏}
+\section{准备知识}
 
 \begin{frame}
 \frametitle{列表环境}
@@ -273,7 +368,7 @@ This is the alertblock environment. The quick brown fox jumps over the lazy dog.
 
 \vspace{2ex}
 不计数列表环境
-\begin{itemize}[<+-| alert@+>]
+\begin{itemize}%[<+-| alert@+>]
 \item 这是一个不计数列表环境.
 \item 这是一个不计数列表环境.
 \item 这是一个不计数列表环境.
@@ -301,7 +396,7 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
 \end{frame}
 
 %------------------------------------------------
-\section{定理与表格}
+\section{研究内容} % XX 方法求解  XX 方程
 %------------------------------------------------
 
 \begin{frame}
@@ -309,7 +404,6 @@ The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the 
 \begin{definition}
 This is a definition environment. 这是一个定义环境.
 \end{definition}
-
 
 \begin{lemma}
 This is a lemma environment. 这是一个引理环境.
@@ -330,11 +424,13 @@ This is a theorem environment. 这是一个定理环境.
 \end{frame}
 
 %------------------------------------------------
+\section{误差分析}
+%------------------------------------------------
 
 \begin{frame}
 \frametitle{定理示例}
 
-\begin{theorem}[Lax-Milgram Lemma]
+\begin{theorem}[Lax-Milgram Lemma] \upshape
 Let $X$ be a Hilbert space, let $a(\cdot, \cdot)$ : $X \times X \rightarrow \mathbb{R}$ be a continuous and coercive bilinear form, and let $F : X \rightarrow \mathbb{R}$ be a linear functional in $X^{\prime}$. Then the variational problem:
 \begin{equation}
   \alert{
@@ -345,7 +441,7 @@ Let $X$ be a Hilbert space, let $a(\cdot, \cdot)$ : $X \times X \rightarrow \mat
 \end{equation}
 has a unique solution. Moreover, we have
 \begin{equation}
-  \alert{ \|u\| \leq \frac{1}{\alpha}\|F\|_{X^{\prime}}. }
+  \alert{ \|u\| \leq \frac{1}{\alpha}\|F\|_{X^{\prime}}.  }
 \end{equation}
 \end{theorem}
 
@@ -410,28 +506,26 @@ Treatment 2 & 0.0015681 & 0.910 \\
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{论文进度安排}
+\frametitle{表格示例}
 \begin{table}[htp!]
 \centering
-\renewcommand\arraystretch{1.3} %定义表格高度
+\renewcommand\arraystretch{1.2} %定义表格高度
 % PLCR前面已经定义
-\begin{tabularx}{0.92\textwidth}{|P{3.2cm}|C|}
+\caption{表格的描述.}
+\label{tab3:NumError}
+\begin{tabularx}{0.9\textwidth}{|P{1cm}|C|C|C|C|}
 \Xhline{2\arrayrulewidth}
-论文起止时间       &  论文筹备过程\\
-\hline
-2019.xx -- 2019.xx    &  论文定题，整理相关文献\\
-\hline
-2020.xx -- 2020.xx    &  审查、修改、完成开题报告\\
-\hline
-2020.xx -- 2020.xx   &  对论文排版、初步完成论文初稿\\
-\hline
-2020.xx -- 2020.xx    &  毕业论文预答辩\\
-\hline
-2021.xx -- 2021.xx    &  对论文进行补充、完善\\
-\hline
-2021.xx -- 2021.xx    &  论文定稿\\
-\hline
-2021.xx -- 2021.xx    &  毕业论文答辩\\
+N  & A       & B    & C  & D   \\
+\Xhline{2\arrayrulewidth}
+1  & 9.20E-05 & 9.90E-05 & 1.00E-06 & 8.00E-06  \\
+2  & 9.80E-05 & 8.00E-05 & 7.00E-06 & 1.40E-05  \\
+3  & 4.00E-06 & 8.10E-05 & 8.80E-05 & 2.00E-05 \\
+4  & 8.50E-05 & 8.70E-05 & 1.90E-05 & 2.10E-05 \\
+5 & 8.60E-05 & 9.30E-05 & 2.50E-05 & 2.00E-06  \\
+6 & 1.70E-05 & 2.40E-05 & 7.60E-05 & 8.30E-05  \\
+7 & 2.30E-05 & 5.00E-06 & 8.20E-05 & 8.90E-05 \\
+8 & 7.90E-05 & 6.00E-06 & 1.30E-05 & 9.50E-05  \\
+9 & 1.00E-05 & 1.20E-05 & 9.40E-05 & 9.60E-05 \\
 \Xhline{2\arrayrulewidth}
 \end{tabularx}
 \end{table}
@@ -441,7 +535,7 @@ Treatment 2 & 0.0015681 & 0.910 \\
 
 %------------------------------------------------
 
-\section{插图环境}
+\section{数值实验}
 
 \begin{frame}
 \frametitle{插图环境}
@@ -450,7 +544,7 @@ Uncomment the code on this slide to include your own image from the same directo
 \begin{figure}[htp!]
 \centering
 \includegraphics[width=0.5\linewidth]{image1}
-\caption{Caption of Figure 1.} \label{fig:A}
+\caption{图的描述.} \label{fig:A}
 \end{figure}
 \end{frame}
 
@@ -463,18 +557,18 @@ Uncomment the code on this slide to include your own image from the same directo
 \begin{minipage}{0.48\linewidth}
 \centering
 \includegraphics[width=\linewidth]{image1}
-\caption{Caption of Figure 1.}
+\caption{图~1~的描述.}
 \end{minipage}\hfill
 \begin{minipage}{0.48\linewidth}
 \centering
 \includegraphics[width=\linewidth]{image2}
-\caption{Caption of Figure 2.}
+\caption{图~2~的描述.}
 \end{minipage}
 \end{figure}
 \end{frame}
 
 %------------------------------------------------
-\section{参考文献}
+\section{总结与展望}
 %------------------------------------------------
 
 \begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
@@ -503,6 +597,7 @@ This statement requires citation \cite{Smith2012}. \\~
 \section{}
 %------------------------------------------------
 
+
 %\setbeamertemplate{headline}{}
 \begin{frame}
 %\sffamily
@@ -513,5 +608,8 @@ Thank you!}
 \end{frame}
 
 
+
 \end{document}
+
+
 

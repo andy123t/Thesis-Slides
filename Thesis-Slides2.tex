@@ -13,11 +13,12 @@
 \mode<presentation>{
 
 %------- Beamer theme ------
-\usetheme{Montpellier}
-%\usetheme{Frankfurt}
+\usetheme{Frankfurt}
+%\usetheme{Montpellier}
+%\usetheme{Warsaw}
 %\usetheme{CambridgeUS}
 %\usetheme{Boadilla}
-%\usetheme{Warsaw}
+
 
 %------- Color theme ------
 \usecolortheme{rose}
@@ -41,18 +42,15 @@
 \setbeamertemplate{enumerate items}[default]
 %\setbeamertemplate{section in toc}[square]
 
-\setbeamertemplate{section in toc}[sections numbered]
-%\setbeamertemplate{subsection in toc}[subsections numbered]
-%\setbeamertemplate{section in toc}[ball unnumbered]
-%\setbeamertemplate{subsection in toc}[ball unnumbered]
-
 \setbeamersize{text margin left=0.75cm, text margin right=0.75cm}
 
-\setbeamertemplate{headline}{ % navigation bar of section (second headline)
-\begin{beamercolorbox}{section in head/foot}
-   \vskip1pt\insertnavigation{\paperwidth}\vskip2pt
+% change the style of headline
+\setbeamertemplate{headline}{
+\begin{beamercolorbox}[ht=4.5ex]{section in head/foot}
+   \vskip2pt\insertsectionnavigationhorizontal{\textwidth}{}{}\vskip2pt
+   %\vskip2pt\insertnavigation{\paperwidth}\vskip2pt
 \end{beamercolorbox}
-\begin{beamercolorbox}[colsep=1.5pt,ht=.3ex]{upper separation line head}  % separator [colsep=1.5pt,ht=.3ex]
+\begin{beamercolorbox}[colsep=1.5pt,ht=.3ex]{upper separation line head}
 \end{beamercolorbox}
 }
 
@@ -67,20 +65,6 @@
 }
 
 }
-
-
-\makeatletter
-\let\beamer@writeslidentry@miniframeson=\beamer@writeslidentry%
-\def\beamer@writeslidentry@miniframesoff{%
-  \expandafter\beamer@ifempty\expandafter{\beamer@framestartpage}{}% does not happen normally
-  {%else
-    % removed \addtocontents commands
-    \clearpage\beamer@notesactions%
-  }
-}
-\newcommand*{\miniframeson}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframeson}
-\newcommand*{\miniframesoff}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframesoff}
-\makeatother
 
 
 %--------- 宏包  ----------
@@ -167,6 +151,22 @@
 \makeatother
 
 
+%\AtBeginSection[]{
+%\begin{frame}
+%  \frametitle{目录} %Outline
+%  \vskip 10pt
+%  \hspace*{0.5em}
+%  \parbox[t]{.95\textwidth}{
+%  \begin{minipage}[c]{\textwidth}
+%  \setlength{\baselineskip}{2.8em}
+%  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
+%  \end{minipage}
+%  }
+%  \addtocounter{framenumber}{-1}
+%\end{frame}
+%}
+
+
 %---------- 自定义命令 ----------
 \newcommand{\red}[1]{\textcolor{red}{#1}}
 \newcommand{\blue}[1]{\textcolor{blue}{#1}}
@@ -191,7 +191,7 @@
 \institute[学校名称]{}
 %\institute[学校名称]{\normalsize 学校名称}
 
-\date[2021.x.x]{2021.x.x}
+\date[202X.X.X]{202X.X.X}
 
 \graphicspath{{./figures/}}
 
@@ -222,7 +222,6 @@
   \end{minipage}
   }
 \end{frame}
-
 
 %--------------------------------------------------------------------------------
 %	PRESENTATION SLIDES
@@ -501,11 +500,10 @@ This statement requires citation \cite{Smith2012}. \\~
 
 
 %------------------------------------------------
+\section{}
+%------------------------------------------------
 
-% get rid of navigation bars in beamer
-\miniframesoff
-
-\setbeamertemplate{headline}{}
+%\setbeamertemplate{headline}{}
 \begin{frame}
 %\sffamily
 \begin{center}
@@ -516,3 +514,4 @@ Thank you!}
 
 
 \end{document}
+
