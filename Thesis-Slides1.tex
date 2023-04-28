@@ -10,7 +10,6 @@
 
 \documentclass[notheorems,11pt,compress]{beamer}
 
-\mode<presentation>{
 
 %------- Beamer theme ------
 \usetheme{Madrid}
@@ -43,12 +42,9 @@
 \setbeamertemplate{enumerate items}[default]
 %\setbeamertemplate{section in toc}[square]
 
-}
-
 % change the style of footline
 \makeatletter
-\setbeamertemplate{footline}
-{
+\setbeamertemplate{footline}{%
   \leavevmode%
   \hbox{%
   \begin{beamercolorbox}[wd=.3\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
@@ -67,12 +63,29 @@
 \makeatother
 
 % change the style of frametitle
+\makeatletter
 \setbeamertemplate{frametitle}{%
-  \nointerlineskip
-  \begin{beamercolorbox}[wd=\paperwidth,ht=3.0ex,dp=1.2ex,leftskip=1.4ex,rightskip=0cm]{frametitle}%
-    \usebeamerfont{frametitle}\usebeamercolor[fg]{frametitle}\insertframetitle
-  \end{beamercolorbox}
+  \ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
+  \@tempdima=\textwidth%
+  \advance\@tempdima by\beamer@leftmargin%
+  \advance\@tempdima by\beamer@rightmargin%
+  \hfill%
+  \begin{beamercolorbox}[wd=\paperwidth,sep=8pt,left]{frametitle}
+    \usebeamerfont{frametitle}%
+    \vbox{}\vskip-1.2ex%
+    \if@tempswa\else\csname beamer@fteleft\endcsname\fi%
+    \strut\insertframetitle\strut\par%
+    {%
+      \ifx\insertframesubtitle\@empty%
+      \else%
+      {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\strut\insertframesubtitle\strut\par}%
+      \fi
+    }%
+    \vskip-1ex%
+    \if@tempswa\else\vskip-8pt\fi
+  \end{beamercolorbox}%
 }
+\makeatother
 
 %--------- 宏包  ----------
 \usepackage[UTF8]{ctex}
@@ -85,6 +98,7 @@
 \usepackage{tabularx,array,makecell}
 \usepackage{color,xcolor}
 \usepackage{cases}
+\usepackage{caption}
 \usepackage{mathtools}
 \usepackage{tikz}
 
@@ -96,6 +110,10 @@
 \newcolumntype{L}{X}
 \newcolumntype{C}{>{\centering \arraybackslash}X}
 \newcolumntype{R}{>{\raggedleft \arraybackslash}X}
+
+%---------- Caption Setting ----------
+\captionsetup[figure]{position=bottom,skip={6pt}}
+\captionsetup[table]{position=top,skip={3pt}}
 
 
 %---------- 设置字体  ----------
@@ -116,30 +134,28 @@
 \numberwithin{table}{section}
 \numberwithin{equation}{section}
 
+\graphicspath{{./figures/}}
+
 %---------- 定理设置  --------------
+\theoremstyle{plain}
 \setbeamertemplate{theorems}[numbered]
-\addtobeamertemplate{theorem begin}{\normalfont}{}
-%\newtheorem{theorem}{Theorem}
+%\addtobeamertemplate{theorem begin}{\normalfont\rmfamily}{}
 \newtheorem{theorem}{定理}
 \numberwithin{theorem}{section}
-%\newtheorem{definition}{Definition}
-\newtheorem{definition}{定义}
-\numberwithin{definition}{section}
-%\newtheorem{lemma}{Lemma}
 \newtheorem{lemma}{引理}
 \numberwithin{lemma}{section}
-%\newtheorem{proposition}{Proposition}
-\newtheorem{proposition}{命题}
-\numberwithin{proposition}{section}
-%\newtheorem{corollary}{Corollary}
 \newtheorem{corollary}{推论}
 \numberwithin{corollary}{section}
+%\theoremstyle{definition}
+\newtheorem{definition}{定义}
+\numberwithin{definition}{section}
+\newtheorem{proposition}{命题}
+\numberwithin{proposition}{section}
 \theoremstyle{example}
-%\newtheorem{example}{Example}
 \newtheorem{example}{例}
 %\numberwithin{example}{section}
 \renewenvironment{proof}[1][证明]{\textbf{#1}:~~}{\qed\par}
-\newenvironment{solution}{\par\noindent\textbf{解}:~~}{\par}
+\newenvironment{solution}{\textbf{解}:~}{\par}
 
 %---------- 调节公式的间距 ----------
 %\AtBeginDocument{
@@ -150,11 +166,9 @@
 %	\setlength{\arraycolsep}{2pt}
 %}
 
-
 \makeatletter
 \newcommand\HUGE{\@setfontsize\Huge{28}{32}}
 \makeatother
-
 
 \AtBeginSection[]{
 \begin{frame}
@@ -195,8 +209,6 @@
 \institute[学校名称]{}
 
 \date[202X.X.X]{202X.X.X}
-
-\graphicspath{{./figures/}}
 
 
 \begin{document}

@@ -59,31 +59,35 @@
   \kern1em\vskip4pt%
 }
 
-\setbeamertemplate{headline}
-{ \leavevmode\begin{beamercolorbox}[wd=\paperwidth,ht=0.5ex,dp=1ex,left]{}
-\end{beamercolorbox} }
-
-\setbeamercolor{upper separation line}{bg=linecolor} %structure.fg!30!bg
-
-%---------- frametitle add a line ----------
-\setbeamertemplate{frametitle}{%
-  \leavevmode\linespread{1}\insertframetitle\vskip-11pt
-  \begin{beamercolorbox}[colsep=0.4pt,wd=\linewidth]{upper separation line} %11.3
+\setbeamertemplate{headline}{%
+  \leavevmode
+  \begin{beamercolorbox}[wd=\paperwidth,ht=0.5ex,dp=1ex,left]{}
   \end{beamercolorbox}
 }
 
-%\useoutertheme{split}
+%---------- frametitle add a line ----------
+\setbeamertemplate{frametitle}{%
+  \leavevmode\linespread{1}\insertframetitle
+  \vskip-1.8ex
+  \begin{beamercolorbox}[colsep=0.4pt,wd=\linewidth]{upper separation line}
+  \end{beamercolorbox}
+}
+
+%---------- 定义颜色 ----------
 %\definecolor{darkblue}{rgb}{0.18,0.18,0.64}
 \definecolor{darkblue}{rgb}{0.2,0.4,0.8}
-\setbeamercolor{structure}{fg=black}
 \definecolor{footer}{rgb}{0.5,0.2,0.5}
 \definecolor{linecolor}{rgb}{0.9,0,0.075}
+\definecolor{darkgreen}{rgb}{0,0.8,0.2}
+%\definecolor{darkred}{rgb}{0.72,0.2,0.15}
 %\definecolor{linecolor}{rgb}{0.35,0.70,0.725}
-%\setbeamercolor{frametitle}{fg=blue}
 
+\setbeamercolor{structure}{fg=black}
+%\setbeamercolor{structure}{fg=darkblue}
+%\setbeamercolor{frametitle}{fg=blue}
 %\setbeamercolor{title}{bg=black!10!white, fg=blue}
 %\setbeamercolor{subtitle}{bg=black!10!white, fg=blue}
-
+\setbeamercolor{upper separation line}{bg=linecolor}
 
 %--------- 宏包  ----------
 \usepackage[UTF8]{ctex}
@@ -96,6 +100,7 @@
 \usepackage{tabularx,array,makecell}
 \usepackage{color,xcolor}
 \usepackage{cases}
+\usepackage{caption}
 \usepackage{mathtools}
 \usepackage{tikz}
 
@@ -108,6 +113,9 @@
 \newcolumntype{C}{>{\centering \arraybackslash}X}
 \newcolumntype{R}{>{\raggedleft \arraybackslash}X}
 
+%---------- Caption Setting ----------
+\captionsetup[figure]{position=bottom,skip={6pt}}
+\captionsetup[table]{position=top,skip={3pt}}
 
 %---------- 设置字体  ----------
 \setbeamerfont{normal text}{family=\rmfamily}
@@ -119,8 +127,8 @@
 %\setbeamerfont{date}{family=\rmfamily}
 \setbeamerfont{footline}{family=\rmfamily}
 \setbeamerfont{headline}{family=\sffamily}
-\setbeamerfont{section in toc}{family=\sffamily}
-\setbeamerfont{subsection in toc}{family=\sffamily}
+\setbeamerfont{section in toc}{family=\rmfamily,series=\bfseries}
+\setbeamerfont{subsection in toc}{family=\rmfamily,series=\bfseries}
 \AtBeginDocument{\usebeamerfont{normal text}}
 \setbeamertemplate{theorems}[normal font]
 
@@ -129,17 +137,12 @@
 \numberwithin{table}{section}
 \numberwithin{equation}{section}
 
+\graphicspath{{./figures/}}
+
 \setbeamertemplate{section in toc}[sections numbered]
 \setbeamertemplate{subsection in toc}[subsections numbered]
 
 % ----- 定义定理颜色 -----
-%\definecolor{footer}{rgb}{0.5,0.2,0.5}
-%\definecolor{darkred}{rgb}{0.72,0.2,0.15}
-%\definecolor{darkblue}{rgb}{0.1,0,0.85}
-\definecolor{darkgreen}{rgb}{0,0.8,0.2}
-%\definecolor{linehead}{rgb}{0.18,0.18,0.64}
-%\setbeamercolor{structure}{fg=darkblue}
-
 \definecolor{bgcolor1}{rgb}{0.95,0.95,1}
 \definecolor{lncolor1}{rgb}{0.63,0.58,0}
 
@@ -155,9 +158,9 @@
 \theorempreskipamount1.2em  % spacing before the environment
 \theorempostskipamount0em % spacing after the environment
 \theorempostwork{\noindent}
-\theoremstyle{numberplain} %numberplain{nonumberbreak}
-\theoremheaderfont{\bfseries\color{structure.fg}\upshape} % blue
-\theorembodyfont{\upshape} %\kaishu\color{black}
+\theoremstyle{plain} %break,plain,nonumberbreak
+\theoremheaderfont{\bfseries\color{structure.fg}\upshape}
+\theorembodyfont{\rmfamily} %\itshape\kaishu\color{black}
 \theoremindent0em
 \theoremseparator{\hspace{0.2em}}
 \theoremnumbering{arabic}
@@ -201,26 +204,22 @@
 %----- numbered environment -----
 \newcounter{example}[section]
 \newenvironment{example}[1][]{\refstepcounter{example}\par\medskip
-   \noindent {\color{structure.fg}{\textbf{例~\thesection.\theexample}}} #1 \rmfamily}{\medskip}
+{\color{structure.fg}{\textbf{例~\thesection.\theexample}}} #1 \rmfamily}{\medskip}
 
-\newenvironment{proof}[1][证明]{{\color{structure.fg}\textbf{#1}:}~~}{\hfill\ensuremath{\square}\par}
-\newenvironment{solution}{\par\noindent\textbf{解}:~~}{\par}
+\newenvironment{proof}[1][证明]{{\color{structure.fg}\textbf{#1}:}~}{\hfill\ensuremath{\square}\par}
+\newenvironment{solution}{\textbf{解}:~}{\par}
 
 %---------- 证明符号 ----------
 \newcommand{\QED}{\hfill\ensuremath{\square}}
 
-%\renewenvironment{proof}[1][证明]{\textbf{#1}:~~}{\qed\par}
-%\newenvironment{solution}{\par\noindent\textbf{解}:~~}{\par}
-
-
 %---------- 调节公式的间距 ----------
-%\AtBeginDocument{
-%	\setlength{\abovedisplayskip}{4pt plus 1pt minus 1pt}
-%	\setlength{\belowdisplayskip}{4pt plus 1pt minus 1pt}
-%	\setlength{\abovedisplayshortskip}{2pt}
-%	\setlength{\belowdisplayshortskip}{2pt}
-%	\setlength{\arraycolsep}{2pt}
-%}
+\AtBeginDocument{
+	\setlength{\abovedisplayskip}{6pt plus 1pt minus 1pt}
+	\setlength{\belowdisplayskip}{6pt plus 1pt minus 1pt}
+	\setlength{\abovedisplayshortskip}{2pt}
+	\setlength{\belowdisplayshortskip}{2pt}
+	\setlength{\arraycolsep}{2pt}
+}
 
 
 \makeatletter
@@ -231,14 +230,8 @@
 %\AtBeginSection[]{
 %\begin{frame}
 %  \frametitle{目录}
-%  \vskip 10pt
-%  \hspace*{0.5em}
-%  \parbox[t]{.95\textwidth}{
-%  \begin{minipage}[c]{\textwidth}
-%  \setlength{\baselineskip}{2.8em}
+%  \leftskip=1em
 %  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
-%  \end{minipage}
-%  }
 %  \addtocounter{framenumber}{-1}
 %\end{frame}
 %}
@@ -276,7 +269,6 @@
 
 \date[202X.X.X]{202X.X.X}
 
-\graphicspath{{./figures/}}
 
 \begin{document}
 
@@ -293,14 +285,8 @@
 
 \begin{frame}
 \frametitle{目录}
-  \vskip 10pt
-  \hspace*{0.5em}
-  \parbox[t]{.95\textwidth}{
-  \begin{minipage}[c]{\textwidth}
-  \setlength{\baselineskip}{2.8em}
-  \tableofcontents
-  \end{minipage}
-  }
+\leftskip=1em
+\tableofcontents
 \end{frame}
 
 
@@ -416,7 +402,7 @@ This is a theorem environment. 这是一个定理环境.
 \begin{frame}
 \frametitle{定理示例}
 
-\begin{theorem}[Lax-Milgram Lemma] \upshape
+\begin{theorem}[Lax-Milgram Lemma]
 Let $X$ be a Hilbert space, let $a(\cdot, \cdot)$ : $X \times X \rightarrow \mathbb{R}$ be a continuous and coercive bilinear form, and let $F : X \rightarrow \mathbb{R}$ be a linear functional in $X^{\prime}$. Then the variational problem:
 \begin{equation}
   \alert{
@@ -427,7 +413,7 @@ Let $X$ be a Hilbert space, let $a(\cdot, \cdot)$ : $X \times X \rightarrow \mat
 \end{equation}
 has a unique solution. Moreover, we have
 \begin{equation}
-  \alert{ \|u\| \leq \frac{1}{\alpha}\|F\|_{X^{\prime}}.  }
+  \alert{ \|u\| \leq \frac{1}{\alpha}\|F\|_{X^{\prime}}. }
 \end{equation}
 \end{theorem}
 
@@ -587,7 +573,7 @@ This statement requires citation \cite{Smith2012}. \\~
 \begin{frame}
 %\sffamily
 \begin{center}
-\HUGE \textcolor[rgb]{0.8,0,0}{谢\quad 谢! \\[8pt]
+\HUGE \textcolor[RGB]{165,3,3}{谢\quad 谢! \\[8pt]
 Thank you!}
 \end{center}
 \end{frame}

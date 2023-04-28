@@ -32,6 +32,8 @@
 \usefonttheme{serif}
 \usefonttheme{professionalfonts}
 
+\setbeamersize{text margin left=0.5cm, text margin right=0.5cm}
+
 %\setbeamertemplate{headline}{}
 %\setbeamertemplate{footline}{}
 \setbeamertemplate{blocks}[rounded][shadow=true]
@@ -39,24 +41,24 @@
 \setbeamertemplate{itemize items}[circle]  % ball, circle
 \setbeamertemplate{enumerate items}[default]
 %\setbeamertemplate{section in toc}[square]
-\setbeamertemplate{section in toc}
-{\leavevmode\leftskip=2.5em%
+
+%---------- 定义目录 ----------
+\setbeamertemplate{section in toc}{
+  \leavevmode\leftskip=2.5em%
   \llap{%
     \usebeamerfont*{section number projected}%
     \usebeamercolor{section number projected}%
-    \begin{pgfpicture}{-1ex}{0ex}{1ex}{2ex}
-      \color{darkorange}
+    \begin{pgfpicture}{-1ex}{-0.2ex}{1ex}{2ex}
+      %\color{structure.fg}
       \pgfpathcircle{\pgfpoint{0pt}{.75ex}}{1.3ex}
       \pgfusepath{fill}
-      \pgftext[base]{\color{fg}\inserttocsectionnumber}
-    \end{pgfpicture}\kern1.25ex%
+      \pgftext[base]{\color{white}\inserttocsectionnumber}
+    \end{pgfpicture}\kern2ex%
   }%
   \inserttocsection\par
 }
 
-
-\setbeamersize{text margin left=0.5cm, text margin right=0.5cm}
-
+%---------- 定义颜色 ----------
 \definecolor{deepblue}{rgb}{0,0.3,0.58}
 \definecolor{darkblue}{rgb}{0.02,0.24,0.44}
 \definecolor{bgblue1}{rgb}{0,0.23,0.44}
@@ -82,7 +84,7 @@
 \setbeamercolor{date in head/foot}{bg=bgblue1,fg=black!5}
 \setbeamercolor{section in head/foot}{bg=bgblue2,fg=black!5}
 \setbeamercolor{subsection in head/foot}{bg=bgblue1,fg=black!5}
-\setbeamercolor{section in toc}{fg=darkorange}
+\setbeamercolor{section in toc}{fg=structure.fg}
 
 \setbeamercolor{structure}{fg=deepblue}
 \setbeamercolor{alerted text}{fg=darkred}
@@ -93,32 +95,46 @@
 %\setbeamertemplate{subsection in toc}[ball unnumbered]
 
 % change the style of headline
-\setbeamertemplate{headline}
-{
+\setbeamertemplate{headline}{%
   \leavevmode%
   \hbox{%
-  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.75ex,dp=1.2ex,right]{section in head/foot}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.75ex,dp=1.1ex,right]{section in head/foot}%
     \usebeamerfont{section in head/foot}\insertsectionhead\hspace*{3ex}
   \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.75ex,dp=1.2ex,left]{subsection in head/foot}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.75ex,dp=1.1ex,left]{subsection in head/foot}%
     \usebeamerfont{subsection in head/foot}\hspace*{3ex}\insertsubsectionhead
   \end{beamercolorbox}}%
   \vskip0pt%
 }
 
-
+% change the style of frametitle
+\makeatletter
 \setbeamertemplate{frametitle}{%
-    \nointerlineskip%
-    \begin{beamercolorbox}[wd=\paperwidth,ht=2.75ex,dp=1ex]{frametitle}
-        \hspace*{1.5ex}\insertframetitle%
-    \end{beamercolorbox}%
-    %\vspace*{-1ex}
+  \ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
+  \@tempdima=\textwidth%
+  \advance\@tempdima by\beamer@leftmargin%
+  \advance\@tempdima by\beamer@rightmargin%
+  \hfill%
+  \begin{beamercolorbox}[wd=\paperwidth,sep=8pt,left]{frametitle}
+    \usebeamerfont{frametitle}%
+    \vbox{}\vskip-1.2ex%
+    \if@tempswa\else\csname beamer@fteleft\endcsname\fi%
+    \strut\insertframetitle\strut\par%
+    {%
+      \ifx\insertframesubtitle\@empty%
+      \else%
+      {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\strut\insertframesubtitle\strut\par}%
+      \fi
+    }%
+    \vskip-1ex%
+    \if@tempswa\else\vskip-8pt\fi
+  \end{beamercolorbox}%
 }
+\makeatother
 
 % change the style of footline
 \makeatletter
-\setbeamertemplate{footline}
-{%
+\setbeamertemplate{footline}{%
   \leavevmode%
   \begin{beamercolorbox}[wd=0.3\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
     \usebeamerfont{title in head/foot} ~~\insertshortauthor\ifx\insertinstitute\empty\else\expandafter
@@ -148,10 +164,9 @@
 \usepackage{tabularx,array,makecell}
 \usepackage{color,xcolor}
 \usepackage{cases}
-\usepackage{tcolorbox}
+\usepackage{caption}
 \usepackage{mathtools}
 \usepackage{tikz}
-
 
 %---------- 定义行距 ----------
 %\renewcommand{\baselinestretch}{1.15}
@@ -162,6 +177,10 @@
 \newcolumntype{C}{>{\centering \arraybackslash}X}
 \newcolumntype{R}{>{\raggedleft \arraybackslash}X}
 
+%---------- Caption Setting ----------
+\captionsetup[figure]{position=bottom,skip={6pt}}
+\captionsetup[table]{position=top,skip={3pt}}
+
 %---------- 设置字体  ----------
 \setbeamerfont{normal text}{family=\rmfamily}
 \setbeamerfont{frametitle}{family=\rmfamily,series=\bfseries}
@@ -170,18 +189,20 @@
 \setbeamerfont{institute}{family=\rmfamily}
 \setbeamerfont{author}{family=\rmfamily}
 \setbeamerfont{date}{family=\rmfamily}
-\setbeamerfont{headline}{family=\sffamily\heiti} %series=\bfseries
+\setbeamerfont{headline}{family=\sffamily\heiti}
 \setbeamerfont{footline}{family=\rmfamily} %\kaishu
-\setbeamerfont{section in toc}{family=\rmfamily}
+\setbeamerfont{section in toc}{family=\rmfamily,series=\bfseries}
 \setbeamerfont{subsection in toc}{family=\rmfamily}
 \AtBeginDocument{\usebeamerfont{normal text}}
-
 
 \setbeamertemplate{caption}[numbered]
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
 \numberwithin{equation}{section}
 
+\graphicspath{{./figures/}}
+
+%----- 定义定理颜色 -----
 \definecolor{bgcolor1}{rgb}{0.95,0.95,1}
 \definecolor{lncolor1}{rgb}{0.63,0.58,0}
 
@@ -197,7 +218,7 @@
 \theorempreskipamount1.2em  % spacing before the environment
 \theorempostskipamount0em % spacing after the environment
 \theorempostwork{\noindent}
-\theoremstyle{numberplain} %numberplain{nonumberbreak}
+\theoremstyle{plain} %break,plain,nonumberbreak
 \theoremheaderfont{\bfseries\color{structure.fg}\upshape} % blue
 \theorembodyfont{\upshape} %\kaishu\color{black}
 \theoremindent0em
@@ -251,24 +272,18 @@
 %---------- 证明符号 ----------
 \newcommand{\QED}{\hfill\ensuremath{\square}}
 
-%\renewenvironment{proof}[1][证明]{\textbf{#1}:~~}{\qed\par}
-%\newenvironment{solution}{\par\noindent\textbf{解}:~~}{\par}
-
-
 %---------- 调节公式的间距 ----------
-%\AtBeginDocument{
-%	\setlength{\abovedisplayskip}{4pt plus 1pt minus 1pt}
-%	\setlength{\belowdisplayskip}{4pt plus 1pt minus 1pt}
-%	\setlength{\abovedisplayshortskip}{2pt}
-%	\setlength{\belowdisplayshortskip}{2pt}
-%	\setlength{\arraycolsep}{2pt}
-%}
-
+\AtBeginDocument{
+	\setlength{\abovedisplayskip}{6pt plus 1pt minus 1pt}
+	\setlength{\belowdisplayskip}{6pt plus 1pt minus 1pt}
+	\setlength{\abovedisplayshortskip}{2pt}
+	\setlength{\belowdisplayshortskip}{2pt}
+	\setlength{\arraycolsep}{2pt}
+}
 
 \makeatletter
 \newcommand\HUGE{\@setfontsize\Huge{28}{32}}
 \makeatother
-
 
 %\AtBeginSection[]{
 %\begin{frame}
@@ -277,7 +292,6 @@
 %  \addtocounter{framenumber}{-1}
 %\end{frame}
 %}
-
 
 %---------- 自定义命令 ----------
 \newcommand{\red}[1]{\textcolor{red}{#1}}
@@ -302,8 +316,6 @@
 \institute[学校名称]{}
 
 \date[202X.X.X]{202X.X.X}
-
-\graphicspath{{./figures/}}
 
 
 \begin{document}
@@ -436,7 +448,7 @@ This is a theorem environment. 这是一个定理环境.
 \begin{frame}
 \frametitle{定理示例}
 
-\begin{theorem}[Lax-Milgram Lemma] \upshape
+\begin{theorem}[Lax-Milgram Lemma]
 Let $X$ be a Hilbert space, let $a(\cdot, \cdot)$ : $X \times X \rightarrow \mathbb{R}$ be a continuous and coercive bilinear form, and let $F : X \rightarrow \mathbb{R}$ be a linear functional in $X^{\prime}$. Then the variational problem:
 \begin{equation}
   \alert{

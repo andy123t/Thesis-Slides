@@ -10,8 +10,6 @@
 
 \documentclass[notheorems,11pt,compress]{beamer}
 
-\mode<presentation>{
-
 %------- Beamer theme ------
 \usetheme{Frankfurt}
 %\usetheme{Montpellier}
@@ -46,12 +44,12 @@
 
 % change the style of headline
 \setbeamertemplate{headline}{
-\begin{beamercolorbox}[ht=4.5ex]{section in head/foot}
-   \vskip2pt\insertsectionnavigationhorizontal{\textwidth}{}{}\vskip2pt
-   %\vskip2pt\insertnavigation{\paperwidth}\vskip2pt
-\end{beamercolorbox}
-\begin{beamercolorbox}[colsep=1.5pt,ht=.3ex]{upper separation line head}
-\end{beamercolorbox}
+  \begin{beamercolorbox}[ht=4.5ex]{section in head/foot}
+  \vskip2pt\insertsectionnavigationhorizontal{\textwidth}{}{}\vskip2pt
+  %\vskip2pt\insertnavigation{\paperwidth}\vskip2pt
+  \end{beamercolorbox}
+  \begin{beamercolorbox}[colsep=1.5pt,ht=.3ex]{upper separation line head}
+  \end{beamercolorbox}
 }
 
 \definecolor{footer}{rgb}{0.5,0.2,0.5}
@@ -62,8 +60,6 @@
   \usebeamerfont{page number in head/foot}%
   \insertframenumber \,/\,\inserttotalframenumber
   \kern1em\vskip3pt%
-}
-
 }
 
 
@@ -78,6 +74,7 @@
 \usepackage{tabularx,array,makecell}
 \usepackage{color,xcolor}
 \usepackage{cases}
+\usepackage{caption}
 \usepackage{mathtools}
 \usepackage{tikz}
 
@@ -90,6 +87,9 @@
 \newcolumntype{C}{>{\centering \arraybackslash}X}
 \newcolumntype{R}{>{\raggedleft \arraybackslash}X}
 
+%---------- Caption Setting ----------
+\captionsetup[figure]{position=bottom,skip={6pt}}
+\captionsetup[table]{position=top,skip={3pt}}
 
 %---------- 设置字体  ----------
 \setbeamerfont{normal text}{family=\rmfamily}
@@ -100,16 +100,17 @@
 \setbeamerfont{author}{family=\kaishu}
 %\setbeamerfont{date}{family=\rmfamily}
 \setbeamerfont{footline}{family=\kaishu}
-\setbeamerfont{headline}{family=\sffamily}
+\setbeamerfont{headline}{family=\sffamily\heiti}
 \setbeamerfont{section in toc}{family=\rmfamily}
 \setbeamerfont{subsection in toc}{family=\rmfamily}
 \AtBeginDocument{\usebeamerfont{normal text}}
-
 
 \setbeamertemplate{caption}[numbered]
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
 \numberwithin{equation}{section}
+
+\graphicspath{{./figures/}}
 
 %---------- 定理设置  --------------
 \setbeamertemplate{theorems}[numbered]
@@ -138,18 +139,16 @@
 
 %---------- 调节公式的间距 ----------
 %\AtBeginDocument{
-%	\setlength{\abovedisplayskip}{4pt plus 1pt minus 1pt}
-%	\setlength{\belowdisplayskip}{4pt plus 1pt minus 1pt}
+%	\setlength{\abovedisplayskip}{6pt plus 1pt minus 1pt}
+%	\setlength{\belowdisplayskip}{6pt plus 1pt minus 1pt}
 %	\setlength{\abovedisplayshortskip}{2pt}
 %	\setlength{\belowdisplayshortskip}{2pt}
 %	\setlength{\arraycolsep}{2pt}
 %}
 
-
 \makeatletter
 \newcommand\HUGE{\@setfontsize\Huge{28}{32}}
 \makeatother
-
 
 %\AtBeginSection[]{
 %\begin{frame}
@@ -165,7 +164,6 @@
 %  \addtocounter{framenumber}{-1}
 %\end{frame}
 %}
-
 
 %---------- 自定义命令 ----------
 \newcommand{\red}[1]{\textcolor{red}{#1}}
@@ -193,7 +191,6 @@
 
 \date[202X.X.X]{202X.X.X}
 
-\graphicspath{{./figures/}}
 
 \begin{document}
 
