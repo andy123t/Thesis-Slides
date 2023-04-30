@@ -49,14 +49,12 @@
 %\setbeamertemplate{enumerate items}[square]
 %\setbeamertemplate{enumerate items}[circle]
 
-%\setbeamertemplate{section in toc}[square]
-
 \setbeamertemplate{footline}{%
   \hfill%
   \usebeamercolor[footer]{page number in head/foot}%
   \usebeamerfont{page number in head/foot}%
   \insertframenumber \,/\,\inserttotalframenumber
-  \kern1em\vskip4pt%
+  \kern1.5em\vskip4pt%
 }
 
 \setbeamertemplate{headline}{%
@@ -142,72 +140,89 @@
 \setbeamertemplate{section in toc}[sections numbered]
 \setbeamertemplate{subsection in toc}[subsections numbered]
 
-% ----- 定义定理颜色 -----
+%----- fix label spacing -----
+\makeatletter
+\def\beamer@inserttarget#1{%
+  \ifbeamer@inframe%
+    #1%
+  \else% defer to next frame
+    \expandafter\gdef\expandafter\beamer@framehypertargets
+    \expandafter{\beamer@framehypertargets#1}%
+  \fi%
+}
+\makeatother
+
+%----- 定义定理颜色 -----
 \definecolor{bgcolor1}{rgb}{0.95,0.95,1}
 \definecolor{lncolor1}{rgb}{0.63,0.58,0}
-
 \definecolor{bgcolor2}{rgb}{0.95,0.95,0.95}
 \definecolor{lncolor2}{rgb}{0.95,0.4,0.1}
-
 \definecolor{bgcolor3}{rgb}{0.9,1,0.9}
-\definecolor{lncolor3}{rgb}{0,0,0}
+\definecolor{lncolor3}{rgb}{0.3,0.3,0.3}
 
 %---------- 定理设置  --------------
 \usepackage[framemethod=tikz]{mdframed}
 \usepackage[amsmath,thref,thmmarks,hyperref]{ntheorem}
 \theorempreskipamount1.2em  % spacing before the environment
-\theorempostskipamount0em % spacing after the environment
+\theorempostskipamount0em  % spacing after the environment
 \theorempostwork{\noindent}
 \theoremstyle{plain} %break,plain,nonumberbreak
-\theoremheaderfont{\bfseries\color{structure.fg}\upshape}
-\theorembodyfont{\rmfamily} %\itshape\kaishu\color{black}
+\if@docn
+\theoremheaderfont{\color{structure.fg}\bfseries} %\upshape
+\else
+\theoremheaderfont{\color{structure.fg}\bfseries} %\upshape
+\fi
+\theorembodyfont{} %\itshape %\setlength{\baselineskip}{15pt}
 \theoremindent0em
-\theoremseparator{\hspace{0.2em}}
+\theoremseparator{.\hspace{0.2em}} %if break -> add \vspace{0.2em}
 \theoremnumbering{arabic}
 \colorlet{thmcolor}{darkgreen}
 \newmdtheoremenv[linecolor=lncolor1,middlelinewidth=0.5pt,
     roundcorner=1pt,backgroundcolor=bgcolor1,%
-    innertopmargin=0.5em,innerbottommargin=0.5em,%
-    innerleftmargin=3pt,innerrightmargin=3pt,%
+    innertopmargin=0.4em,innerbottommargin=0.4em,%
+    innerleftmargin=5pt,innerrightmargin=5pt,%
     skipbelow=0.5em,skipabove=1em,%
     splittopskip=\topskip,ntheorem]{theorem}%
-    {定理}[section]
+    {定理}%[section]
 \newmdtheoremenv[linecolor=lncolor1,middlelinewidth=0.5pt,
     roundcorner=1pt,backgroundcolor=bgcolor1,%
-    innertopmargin=0.5em,innerbottommargin=0.5em,%
-    innerleftmargin=3pt,innerrightmargin=3pt,%
+    innertopmargin=0.4em,innerbottommargin=0.4em,%
+    innerleftmargin=5pt,innerrightmargin=5pt,%
     skipbelow=0.5em,skipabove=1em,%
     splittopskip=\topskip,ntheorem]{corollary}%
-    {推论}[section]
+    {推论}%[section]
 \newmdtheoremenv[linecolor=lncolor1,middlelinewidth=0.5pt,
     roundcorner=1pt,backgroundcolor=bgcolor1,%
-    innertopmargin=0.5em,innerbottommargin=0.5em,%
-    innerleftmargin=3pt,innerrightmargin=3pt,%
+    innertopmargin=0.4em,innerbottommargin=0.4em,%
+    innerleftmargin=5pt,innerrightmargin=5pt,%
     skipbelow=0.5em,skipabove=1em,%
     splittopskip=\topskip,ntheorem]{lemma}%
-    {引理}[section]
+    {引理}%[section]
 \newmdtheoremenv[linecolor=lncolor2,middlelinewidth=0.5pt,
     roundcorner=1pt,backgroundcolor=bgcolor2,%
-    innertopmargin=0.5em,innerbottommargin=0.5em,%
-    innerleftmargin=3pt,innerrightmargin=3pt,%
+    innertopmargin=0.4em,innerbottommargin=0.4em,%
+    innerleftmargin=5pt,innerrightmargin=5pt,%
     skipbelow=0.5em,skipabove=1em,%
     splittopskip=\topskip,ntheorem]{proposition}%
-    {命题}[section]
+    {命题}%[section]
 \newmdtheoremenv[linecolor=lncolor3,middlelinewidth=0.5pt,
     roundcorner=1pt,backgroundcolor=bgcolor3,%
-    innertopmargin=0.5em,innerbottommargin=0.5em,%
-    innerleftmargin=3pt,innerrightmargin=3pt,%
+    innertopmargin=0.4em,innerbottommargin=0.4em,%
+    innerleftmargin=5pt,innerrightmargin=5pt,%
     skipbelow=0.5em,skipabove=1em,%
     splittopskip=\topskip,ntheorem]{definition}%
-    {定义}[section]
+    {定义}%[section]
+\newmdtheoremenv[linecolor=white,middlelinewidth=0.5pt,
+    roundcorner=2pt,backgroundcolor=none,%
+    innertopmargin=0em,innerbottommargin=0em,%
+    innerleftmargin=0pt,innerrightmargin=0pt,%
+    skipbelow=0.5em,skipabove=1em,%
+    splittopskip=\topskip,ntheorem]{example}%
+    {例}%[section]
 
-%----- numbered environment -----
-\newcounter{example}[section]
-\newenvironment{example}[1][]{\refstepcounter{example}\par\medskip
-{\color{structure.fg}{\textbf{例~\thesection.\theexample}}} #1 \rmfamily}{\medskip}
-
-\newenvironment{proof}[1][证明]{{\color{structure.fg}\textbf{#1}:}~}{\hfill\ensuremath{\square}\par}
-\newenvironment{solution}{\textbf{解}:~}{\par}
+%----- proof and solution environment -----
+\newenvironment{proof}{\par{\bfseries\color{structure.fg}{证明}:}\rmfamily~}{\par}
+\newenvironment{solution}{\par{\bfseries\color{structure.fg}{解}:}\rmfamily~}{\par}
 
 %---------- 证明符号 ----------
 \newcommand{\QED}{\hfill\ensuremath{\square}}
@@ -549,19 +564,20 @@ An example of the \verb|\cite| command to cite within the presentation:\\~
 
 This statement requires citation \cite{Smith2012}. \\~
 
-文献引用示例 \cite{LiLiu1997}, 可以修改引用文献样式.
+文献引用示例 \cite{LiLiu2009}, 可以修改引用文献样式.
 \end{frame}
+
 
 %------------------------------------------------
 
 \begin{frame}
 \frametitle{References}
-\footnotesize{
-\begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
+\small
+\begin{thebibliography}{99}
 \bibitem[Smith, 2012]{Smith2012} John Smith, Title of the publication, \emph{Journal Name}, 12(3):45--678, 2012.
-\bibitem[李荣华, 1997]{LiLiu1997} 李荣华, 刘播. 微分方程数值解法. 东南大学出版社, 1997.
+\bibitem[李荣华, 2009]{LiLiu2009} 李荣华, 刘播. 微分方程数值解法. 北京: 高等教育出版社, 2009.
 \end{thebibliography}
-}
+
 \end{frame}
 
 

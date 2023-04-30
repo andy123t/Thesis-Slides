@@ -59,7 +59,7 @@
   \usebeamercolor[footer]{page number in head/foot}%
   \usebeamerfont{page number in head/foot}%
   \insertframenumber \,/\,\inserttotalframenumber
-  \kern1em\vskip3pt%
+  \kern1em\vskip4pt%
 }
 
 
@@ -112,39 +112,47 @@
 
 \graphicspath{{./figures/}}
 
+%----- fix label spacing -----
+\makeatletter
+\def\beamer@inserttarget#1{%
+  \ifbeamer@inframe%
+    #1%
+  \else% defer to next frame
+    \expandafter\gdef\expandafter\beamer@framehypertargets
+    \expandafter{\beamer@framehypertargets#1}%
+  \fi%
+}
+\makeatother
+
 %---------- 定理设置  --------------
+\theoremstyle{plain}
 \setbeamertemplate{theorems}[numbered]
-\addtobeamertemplate{theorem begin}{\normalfont}{}
-%\newtheorem{theorem}{Theorem}
+%\addtobeamertemplate{theorem begin}{\normalfont\rmfamily}{}
 \newtheorem{theorem}{定理}
 \numberwithin{theorem}{section}
-%\newtheorem{definition}{Definition}
-\newtheorem{definition}{定义}
-\numberwithin{definition}{section}
-%\newtheorem{lemma}{Lemma}
 \newtheorem{lemma}{引理}
 \numberwithin{lemma}{section}
-%\newtheorem{proposition}{Proposition}
-\newtheorem{proposition}{命题}
-\numberwithin{proposition}{section}
-%\newtheorem{corollary}{Corollary}
 \newtheorem{corollary}{推论}
 \numberwithin{corollary}{section}
+%\theoremstyle{definition}
+\newtheorem{definition}{定义}
+\numberwithin{definition}{section}
+\newtheorem{proposition}{命题}
+\numberwithin{proposition}{section}
 \theoremstyle{example}
-%\newtheorem{example}{Example}
 \newtheorem{example}{例}
 %\numberwithin{example}{section}
 \renewenvironment{proof}[1][证明]{\textbf{#1}:~~}{\qed\par}
-\newenvironment{solution}{\par\noindent\textbf{解}:~~}{\par}
+\newenvironment{solution}{\textbf{解}:~}{\par}
 
 %---------- 调节公式的间距 ----------
-%\AtBeginDocument{
-%	\setlength{\abovedisplayskip}{6pt plus 1pt minus 1pt}
-%	\setlength{\belowdisplayskip}{6pt plus 1pt minus 1pt}
-%	\setlength{\abovedisplayshortskip}{2pt}
-%	\setlength{\belowdisplayshortskip}{2pt}
-%	\setlength{\arraycolsep}{2pt}
-%}
+\AtBeginDocument{
+  \setlength{\abovedisplayskip}{6pt plus 1pt minus 1pt}
+  \setlength{\belowdisplayskip}{6pt plus 1pt minus 1pt}
+  \setlength{\abovedisplayshortskip}{2pt}
+  \setlength{\belowdisplayshortskip}{2pt}
+  \setlength{\arraycolsep}{2pt}
+}
 
 \makeatletter
 \newcommand\HUGE{\@setfontsize\Huge{28}{32}}
@@ -480,19 +488,20 @@ An example of the \verb|\cite| command to cite within the presentation:\\~
 
 This statement requires citation \cite{Smith2012}. \\~
 
-文献引用示例 \cite{LiLiu1997}, 可以修改引用文献样式.
+文献引用示例 \cite{LiLiu2009}, 可以修改引用文献样式.
 \end{frame}
+
 
 %------------------------------------------------
 
 \begin{frame}
 \frametitle{References}
-\footnotesize{
+\small
 \begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
 \bibitem[Smith, 2012]{Smith2012} John Smith, Title of the publication, \emph{Journal Name}, 12(3):45--678, 2012.
-\bibitem[李荣华, 1997]{LiLiu1997} 李荣华, 刘播. 微分方程数值解法. 东南大学出版社, 1997.
+\bibitem[李荣华, 2009]{LiLiu2009} 李荣华, 刘播. 微分方程数值解法. 北京: 高等教育出版社, 2009.
 \end{thebibliography}
-}
+
 \end{frame}
 
 
