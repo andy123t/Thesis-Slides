@@ -228,7 +228,7 @@
 \fi
 \theorembodyfont{} %\itshape %\setlength{\baselineskip}{15pt}
 \theoremindent0em
-\theoremseparator{.\hspace{0.2em}} %if break -> add \vspace{0.2em}
+\theoremseparator{.} %if break -> add \vspace{0.2em}
 \theoremnumbering{arabic}
 \colorlet{thmcolor}{darkgreen}
 \newmdtheoremenv[linecolor=lncolor1,middlelinewidth=0.5pt,
@@ -274,13 +274,14 @@
     splittopskip=\topskip,ntheorem]{example}%
     {例}%[section]
 
-%----- proof and solution environment -----
-\newenvironment{proof}{\par{\bfseries\color{structure.fg}{证明}:}\rmfamily~}{\par}
-\newenvironment{solution}{\par{\bfseries\color{structure.fg}{解}:}\rmfamily~}{\par}
+%---------- 证明和解环境 ----------
+\newenvironment{proof}[1][证明]{\par\textbf{#1:}%
+\enspace\ignorespaces}{\par}
+\newenvironment{solution}{\par\textbf{解:}%
+\enspace\ignorespaces}{\par}
 
 %---------- 证明符号 ----------
 \newcommand{\QED}{\hfill\ensuremath{\square}}
-
 
 %---------- 调节公式的间距 ----------
 \AtBeginDocument{
@@ -451,7 +452,7 @@ This is a theorem environment. 这是一个定理环境.
 \end{theorem}
 
 \begin{proof}
-  This is a proof environment. 这是一个证明环境.
+  This is a proof environment. 这是一个证明环境. \QED
 \end{proof}
 
 \end{frame}
