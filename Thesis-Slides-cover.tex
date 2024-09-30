@@ -119,7 +119,7 @@
 %---------- 设置字体  ----------
 \setbeamerfont{normal text}{family=\rmfamily}
 \setbeamerfont{frametitle}{family=\rmfamily}
-\setbeamerfont{title}{family=\rmfamily}
+%\setbeamerfont{title}{family=\rmfamily}
 \setbeamerfont{subtitle}{family=\rmfamily}
 \setbeamerfont{institute}{family=\kaishu}
 \setbeamerfont{author}{family=\kaishu}
@@ -185,6 +185,37 @@
 %	\setlength{\arraycolsep}{2pt}
 %}
 
+%---------- 重新定义标题页 ----------
+\makeatletter
+\newcommand{\header}[1]{\def\defheader{#1}}
+\newcommand{\major}[1]{\def\defmajor{#1}}
+\newcommand{\study}[1]{\def\defstudy{#1}}
+\newcommand{\advisor}[1]{\def\defadvisor{#1}}
+\makeatother
+
+\definecolor{deepred}{RGB}{200,0,0}
+
+\defbeamertemplate*{title page}{customized}[1][]{
+\begin{center}
+\ifx\defheader\undefined{}\else{\color{deepred}\bfseries\large\defheader}\\[2em]\fi%
+\begin{beamercolorbox}[wd=\textwidth,sep=8pt,rounded=true,shadow=true,center]{title}
+\usebeamerfont{title}\usebeamercolor{title}\inserttitle
+\end{beamercolorbox}
+\vskip 1.5em
+{\renewcommand\arraystretch{1.5}\kaishu%
+\begin{tabular}{p{58pt}@{}l}
+\makebox[4em][s]{答辩人}\;:&\insertauthor \\
+\makebox[4em][s]{专业}\;:&\defmajor \\
+\makebox[4em][s]{指导教师}\;:&\defadvisor \\
+\makebox[4em][s]{研究方向}\;:&\defstudy \\
+\end{tabular}}
+\vskip 2em
+\usebeamerfont{date}\insertdate
+%\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic
+\end{center}
+}
+
+
 \makeatletter
 \newcommand\HUGE{\@setfontsize\Huge{28}{32}}
 \makeatother
@@ -207,16 +238,23 @@
 %	TITLE PAGE
 %--------------------------------------------------------------------------------
 
+\header{202X\thinspace 届硕士学位论文答辩}
+
 \title[论文题目]{毕业论文题目毕业论文题目毕业论文题目}
 
-\author[学生姓名]
-{
-    答辩人：学生姓名~~ \vskip 3mm
-    % 报告人：学生姓名~~ \vskip 3mm
-    专业：专业名称 \vskip 3mm
-    指导教师：导师姓名 ~ 职称 \vskip 3mm
-    研究方向：专业研究方向
-}
+\author[学生姓名]{学生姓名}
+\advisor{某某某~~教授}
+\major{专业名称}  % 专业名称
+\study{专业方向名称}
+
+%\author[学生姓名]
+%{
+%    答辩人：学生姓名~~ \vskip 3mm
+%    % 报告人：学生姓名~~ \vskip 3mm
+%    专业：专业名称 \vskip 3mm
+%    指导教师：导师姓名 ~ 职称 \vskip 3mm
+%    研究方向：专业研究方向
+%}
 
 \institute[学校名称]{}
 
